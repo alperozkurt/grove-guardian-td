@@ -334,3 +334,19 @@ Received Import Request.
 Start importing Assets/Prefabs/Player.prefab using Guid(0ababc110c374287a954e6547feae3cb) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '574950ed5456a7e0ca684f50aefd0bee') in 0.005361523 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
 
+========================================================================
+Received Import Request.
+  Time since last request: 48.449790 seconds.
+  path: Assets/Prefabs/Player.prefab
+  artifactKey: Guid(0ababc110c374287a954e6547feae3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player.prefab using Guid(0ababc110c374287a954e6547feae3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0f308acd11416a761d1de1167b2cb4d9') in 0.004265448 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.015200 seconds.
+  path: Assets/Materials/PlayerColor.mat
+  artifactKey: Guid(c7b9d3c7e47923d7a8913dce5c3f540b) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Materials/PlayerColor.mat using Guid(c7b9d3c7e47923d7a8913dce5c3f540b) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd15085b28436cd4f20627a40e669027d') in 0.003442986 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
