@@ -323,3 +323,196 @@ Memory consumption went from 80.1 MB to 79.3 MB.
 Total: 8.529003 ms (FindLiveObjects: 0.402705 ms CreateObjectMapping: 0.575429 ms MarkObjects: 6.462598 ms  DeleteObjects: 1.087409 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 233.070113 seconds.
+  path: Assets/Materials/Base Color.mat
+  artifactKey: Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Base Color.mat using Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '70de92afe2386efac14217f80678a6a0') in 0.064480964 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.906508 seconds.
+  path: Assets/Materials/Base Color.mat
+  artifactKey: Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Materials/Base Color.mat using Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5276dd1dc33f8cace5bc5b6c65a4af09') in 0.059565356 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.048509 seconds.
+  path: Assets/Prefabs/Base.prefab
+  artifactKey: Guid(0fc9ca7baa60f16ca9f9356cd6fc4dff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Base.prefab using Guid(0fc9ca7baa60f16ca9f9356cd6fc4dff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '77ef4617be505cba10456b0a64ac6036') in 0.015347567 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.961587 seconds.
+  path: Assets/Prefabs/Base.prefab
+  artifactKey: Guid(0fc9ca7baa60f16ca9f9356cd6fc4dff) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Prefabs/Base.prefab using Guid(0fc9ca7baa60f16ca9f9356cd6fc4dff) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'dd03b3d00a75b1108f4ce254924258a9') in 0.035452755 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3841 unused Assets / (0.8 MB). Loaded Objects now: 4385.
+Memory consumption went from 80.7 MB to 79.9 MB.
+Total: 6.563897 ms (FindLiveObjects: 0.402114 ms CreateObjectMapping: 0.216617 ms MarkObjects: 5.228944 ms  DeleteObjects: 0.715571 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 99.071980 seconds.
+  path: Assets/Scripts/EnemyAi.cs
+  artifactKey: Guid(5a62db1988453c60381bb5c40538d4b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/EnemyAi.cs using Guid(5a62db1988453c60381bb5c40538d4b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e267592400c7bd73da5b6027668f2f55') in 0.000612308 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.544296 seconds.
+  path: Assets/Scripts/EnemyAi.cs
+  artifactKey: Guid(5a62db1988453c60381bb5c40538d4b8) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Scripts/EnemyAi.cs using Guid(5a62db1988453c60381bb5c40538d4b8) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '75fa1f90f1d851ce5cfaf4a6eac42f6b') in 0.002669405 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.459 seconds
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.593 seconds
+Domain Reload Profiling: 1054ms
+	BeginReloadAssembly (125ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (276ms)
+		LoadAssemblies (203ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (115ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (99ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (594ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (489ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (85ms)
+			ProcessInitializeOnLoadAttributes (375ms)
+			ProcessInitializeOnLoadMethodAttributes (19ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3848 unused Assets / (1.2 MB). Loaded Objects now: 4385.
+Memory consumption went from 80.4 MB to 79.2 MB.
+Total: 8.688401 ms (FindLiveObjects: 0.592350 ms CreateObjectMapping: 0.677320 ms MarkObjects: 5.890454 ms  DeleteObjects: 1.526422 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.684746 seconds.
+  path: Assets/Scripts/EnemyAi.cs
+  artifactKey: Guid(5a62db1988453c60381bb5c40538d4b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/EnemyAi.cs using Guid(5a62db1988453c60381bb5c40538d4b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '02542f4ace6fca12296ec2e28b7bfeeb') in 0.001686672 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.277787 seconds.
+  path: Assets/Materials/Base Color.mat
+  artifactKey: Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Materials/Base Color.mat using Guid(94036764cee8d7fa8885753b5f19bbe5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'fbcd34803d8b56e91fb7e5f40ac353eb') in 0.069051984 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 55.464458 seconds.
+  path: Assets/InputSystem_Actions.inputactions
+  artifactKey: Guid(289c1b55c9541489481df5cc06664110) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/InputSystem_Actions.inputactions using Guid(289c1b55c9541489481df5cc06664110) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)UpdateMenuTitleForLanguage: 10
+ -> (artifact id: 'b444446f5cbd113facd7c7479ded786c') in 0.135564847 seconds
+Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 21
+
+========================================================================
+Received Import Request.
+  Time since last request: 48.303856 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '6055ea853033783bc3c2acb9f9489e86') in 0.003028148 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.491 seconds
+Refreshing native plugins compatible for Editor in 0.30 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.549 seconds
+Domain Reload Profiling: 1043ms
+	BeginReloadAssembly (134ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (48ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (296ms)
+		LoadAssemblies (215ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (122ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (106ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (550ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (450ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (340ms)
+			ProcessInitializeOnLoadMethodAttributes (20ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3848 unused Assets / (1.4 MB). Loaded Objects now: 4386.
+Memory consumption went from 80.4 MB to 78.9 MB.
+Total: 9.565065 ms (FindLiveObjects: 0.627857 ms CreateObjectMapping: 0.767800 ms MarkObjects: 6.999284 ms  DeleteObjects: 1.168891 ms)
+
+Prepare: number of updated asset objects reloaded= 0
