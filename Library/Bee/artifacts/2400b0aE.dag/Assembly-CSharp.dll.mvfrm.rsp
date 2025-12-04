@@ -1,12 +1,18 @@
+Library/Bee/artifacts/mvdfrm/Unity.Cinemachine.Editor.ref.dll_DC899A9EABFB5525.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.Cinemachine.ref.dll_80FF89DB68CF6B4C.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.EditorCoroutines.Editor.ref.dll_24F40B351B9ACD85.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.InputSystem.ForUI.ref.dll_CFD7856823C3CD5A.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.InputSystem.ref.dll_06424321BA44ABAB.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.Mathematics.Editor.ref.dll_3D2C2B72ECCBF4B9.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.Mathematics.ref.dll_F20355C132B4E278.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.Multiplayer.Center.Common.ref.dll_1579E59FCCBEB6B2.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.Multiplayer.Center.Editor.ref.dll_1262DD9ACDE5E134.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.Performance.Profile-Analyzer.Editor.ref.dll_FC7FE7C2525DF555.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.PlasticSCM.Editor.ref.dll_F0D9BA1F3F167740.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.Rider.Editor.ref.dll_9145F68A59D35CE5.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.Settings.Editor.ref.dll_C5D459AC3FA0C65A.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.Splines.Editor.ref.dll_D98624A950B26F9D.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.Splines.ref.dll_23623E04CF8B0954.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.ref.dll_74E155EA2BEE38FD.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.ref.dll_3B45F137F1F80EEA.mvfrm
 Library/Bee/artifacts/mvdfrm/Unity.TestTools.CodeCoverage.Editor.ref.dll_4F7EA18A8F1A3B43.mvfrm
@@ -142,4 +148,4 @@ Library/Bee/artifacts/mvdfrm/UnityEngine.VirtualTexturingModule.dll_E0442AE80867
 Library/Bee/artifacts/mvdfrm/UnityEngine.WindModule.dll_9916C5688F00A009.mvfrm
 Library/Bee/artifacts/mvdfrm/UnityEngine.XRModule.dll_C9E49E1F1736A0AB.mvfrm
 Library/Bee/artifacts/mvdfrm/UnityEngine.dll_928718042194D5F5.mvfrm
-Library/Bee/artifacts/mvdfrm/Unity.VisualScripting.Antlr3.Runtime.dll_8189EC8801BEEB18.mvfrm
+Library/Bee/artifacts/mvdfrm/Unity.VisualScripting.Antlr3.Runtime.dll_09E3B58BCA4FB048.mvfrm
