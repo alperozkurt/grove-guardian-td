@@ -88,3 +88,5 @@ sysinfo.txt
 ########################################
 github
 github.pub
+ignore.conf
+.gitignore
