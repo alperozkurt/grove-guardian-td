@@ -404,6 +404,7 @@
 -analyzer:"/home/alper/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/EnemyAi.cs"
 "Assets/Scripts/Movement.cs"
+"Assets/Scripts/PlayerMovement.cs"
 -langversion:9.0
 /deterministic
 /optimize+

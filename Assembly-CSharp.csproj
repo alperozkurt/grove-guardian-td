@@ -48,6 +48,7 @@
     <Analyzer Include="/home/alper/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/EnemyAi.cs" />
     <Compile Include="Assets/Scripts/Movement.cs" />
   </ItemGroup>
