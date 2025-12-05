@@ -166,3 +166,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   damageOnImpact: 10
+  coinOnDeath: 2

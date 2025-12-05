@@ -17,6 +17,7 @@ Assets/AssetStoreTools/
 Assets/Plugins/PlasticSCM*
 Assets/AddressableAssetsData/*/*.bin*
 Assets/StreamingAssets/aa.meta
+Assets/BayatGames
 assets/assetstoretools/
 assets/plugins/PlasticSCM*
 assets/addressableassetsdata/*/*.bin*
@@ -88,5 +89,4 @@ sysinfo.txt
 ########################################
 github
 github.pub
-ignore.conf
 .gitignore
