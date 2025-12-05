@@ -19,5 +19,6 @@ public class BaseController : MonoBehaviour
     public void DealDamageToBase(float damage)
     {
         health -= damage;
+        Debug.Log("Health: " + health);
     }
 }
