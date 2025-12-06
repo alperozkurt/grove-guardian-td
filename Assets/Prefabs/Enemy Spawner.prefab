@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8981438512725925463}
   m_Layer: 0
   m_Name: Enemy Spawner
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55, y: 4, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 2, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
     enemyPrefab: {fileID: 1444851992901040901, guid: d9de4bbaec34239c98d0ec2ee5932a81, type: 3}
     spawnCount: 4
     cooldown: 2
-  timeBetweenWaves: 3
+  timeBetweenWaves: 10
 --- !u!65 &8981438512725925463
 BoxCollider:
   m_ObjectHideFlags: 0

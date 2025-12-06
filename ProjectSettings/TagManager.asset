@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Base
+  - Enemy
+  - Environment
+  - Tower
+  - Bullet
   layers:
   - Default
   - TransparentFX
