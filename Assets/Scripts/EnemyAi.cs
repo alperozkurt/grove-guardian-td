@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
@@ -19,15 +18,20 @@ public class EnemyAi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Base"))
         {
-            target.GetComponent<BaseController>().DealDamageToBase(damageOnImpact);
-            
-            Destroy(gameObject);
+            GroveController grove = collision.gameObject.GetComponent<GroveController>();
+
+            if(grove != null)
+            {
+                grove.DealDamageToBase(damageOnImpact);
+            }
+
             CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
             if(hud != null)
             {
                 hud.AddCoins(coinOnDeath);
             }
-            
+
+            Destroy(gameObject);
         }
     }
 }

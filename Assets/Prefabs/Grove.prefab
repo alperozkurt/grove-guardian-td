@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1188429562680160193}
   - component: {fileID: 8782565833720562702}
   - component: {fileID: 2218533543511921983}
-  - component: {fileID: 5989253295449744060}
+  - component: {fileID: 6741292586780505172}
   m_Layer: 0
-  m_Name: Base
+  m_Name: Grove
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5989253295449744060
+--- !u!114 &6741292586780505172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796c2f8de16ea9fab928560a013cebc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes: []
-  health: 100
-  money: 0
+  maxHealth: 100
+  coin: 10
+  healthUI: {fileID: 0}
+  currentHealth: 20

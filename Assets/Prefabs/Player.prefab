@@ -129,7 +129,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 10
   gravity: -9.81
-  cameraTransform: {fileID: 4567926654474647906, guid: 0a250b8668a9aac89a05468476749c13, type: 3}
+  cameraTransform: {fileID: 0}
 --- !u!114 &1782516810264247767
 MonoBehaviour:
   m_ObjectHideFlags: 0

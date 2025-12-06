@@ -1,20 +1,18 @@
 using UnityEngine;
-using TMPro; // Required for TextMeshPro
+using TMPro;
 
 public class CoinDisplay : MonoBehaviour
 {
-    // Drag your Text object here in the Inspector
     [SerializeField] private TextMeshProUGUI coinText;
-    
-    // Internal variable to track coins
-    private int currentCoins = 0;
+    [SerializeField] private GameObject grove;
+    private float currentCoins;
 
     void Start()
     {
+        currentCoins = grove.GetComponent<GroveController>().coin;
         UpdateCoinUI();
     }
 
-    // Call this function whenever the player picks up a coin
     public void AddCoins(int amount)
     {
         currentCoins += amount;
@@ -23,7 +21,6 @@ public class CoinDisplay : MonoBehaviour
 
     private void UpdateCoinUI()
     {
-        // Updates the text to match the number
         coinText.text = currentCoins.ToString();
     }
 }
