@@ -1,16 +1,26 @@
+using System.Collections;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject towerToCreate;
+
+    private Vector3 towerPosition;
+    private float towerScale;
+
     void Start()
     {
-        
+        towerScale = towerToCreate.GetComponent<Transform>().localScale.y;
+        towerPosition = new Vector3(
+            gameObject.GetComponent<Transform>().position.x,
+            -(towerScale - 1)/2,
+            gameObject.GetComponent<Transform>().position.z);
+        StartCoroutine(CreateTower());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator CreateTower()
     {
-        
+        yield return new WaitForSeconds(3f);
+        Instantiate(towerToCreate, towerPosition, Quaternion.identity);
     }
 }
