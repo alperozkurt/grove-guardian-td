@@ -7,23 +7,20 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
     [SerializeField] private int coinOnDeath = 2;
+    [SerializeField] private EnemyHealthBar healthBar;
     float currentHealth;
 
     void Start()
-    {
+    {   
         currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     void Update()
     {
         if(currentHealth <= 0)
         {
-            CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
-            if(hud != null)
-            {
-                hud.AddCoins(coinOnDeath);
-            }
-            Destroy(gameObject);
+            Die();
         }
 
         transform.position = Vector3.MoveTowards(
@@ -41,17 +38,32 @@ public class EnemyAi : MonoBehaviour
                 grove.DealDamageToBase(damageOnImpact);
             }
 
-            CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
-            if(hud != null)
-            {
-                hud.AddCoins(coinOnDeath);
-            }
-
-            Destroy(gameObject);
+            Die();
         }
     }
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        currentHealth = Mathf.Max(currentHealth, 0);
+
+        if(healthBar != null)
+        {
+            healthBar.UpdateHealthBar(currentHealth,maxHealth);
+        }
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
+        if(hud != null)
+        {
+            hud.AddCoins(coinOnDeath);
+        }
+        Destroy(gameObject);
     }
 }

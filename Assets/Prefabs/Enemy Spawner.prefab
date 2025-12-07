@@ -56,14 +56,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveCount: 1
-    enemyPrefab: {fileID: 1444851992901040901, guid: 20517632dc8df5bae9a2618fb87fe909, type: 3}
+    enemyPrefab: {fileID: 2591174393801668035, guid: b73de0e9a9e9bb33b9d548f229d62ac5, type: 3}
     spawnCount: 4
     cooldown: 2
   - waveCount: 2
     enemyPrefab: {fileID: 1444851992901040901, guid: d9de4bbaec34239c98d0ec2ee5932a81, type: 3}
     spawnCount: 4
     cooldown: 2
-  timeBetweenWaves: 10
+  timeBetweenWaves: 7
 --- !u!65 &8981438512725925463
 BoxCollider:
   m_ObjectHideFlags: 0

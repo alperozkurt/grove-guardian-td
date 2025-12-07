@@ -48,7 +48,6 @@ public class BulletAi : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy hit");
             EnemyAi enemyAi = other.GetComponent<EnemyAi>();
             enemyAi.TakeDamage(bulletDamage);
             Destroy(gameObject);
