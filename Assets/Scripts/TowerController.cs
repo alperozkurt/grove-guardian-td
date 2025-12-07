@@ -28,7 +28,7 @@ public class TowerController : MonoBehaviour
     }
     IEnumerator FinishCreating()
     {
-        targetY = (gameObject.GetComponent<Transform>().localScale.y + 1) / 2;
+        targetY = 0.5f;
         while(transform.position.y < targetY)
         {
             float newY = transform.position.y + (5f * Time.deltaTime);

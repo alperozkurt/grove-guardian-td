@@ -1724,6 +1724,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerFoundation
       objectReference: {fileID: 0}
+    - target: {fileID: 7717986275488156015, guid: 8b66b972179a7839eacb9cd58bad2850, type: 3}
+      propertyPath: towerToCreate
+      value: 
+      objectReference: {fileID: 7872443174113817124, guid: da779b59e56d57e219146c4cee5537cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
