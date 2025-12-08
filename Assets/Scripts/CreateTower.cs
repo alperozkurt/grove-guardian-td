@@ -9,7 +9,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         towerPosition = new Vector3(
             gameObject.GetComponent<Transform>().position.x,
-            -5,
+            -towerToCreate.transform.localScale.y,
             gameObject.GetComponent<Transform>().position.z);
         StartCoroutine(CreateTower());
     }

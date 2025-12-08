@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 5396708378944453081}
   - component: {fileID: 2113331223896630199}
   - component: {fileID: 8123777002266070683}
-  - component: {fileID: 7717986275488156015}
   - component: {fileID: 7808159779980745834}
   m_Layer: 0
   m_Name: TowerFoundation
@@ -195,21 +194,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7717986275488156015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3049616712725283699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d9952e542f4a6fb9543902390b6f0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerToCreate: {fileID: 7872443174113817124, guid: da779b59e56d57e219146c4cee5537cc, type: 3}
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!54 &7808159779980745834
 Rigidbody:
   m_ObjectHideFlags: 0
