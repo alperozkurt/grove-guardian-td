@@ -30,6 +30,7 @@ public class BulletAi : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         Vector3 grovePosition = grove.transform.position;
 
+        if(enemies == null) return;
 
         foreach(GameObject enemy in enemies)
         {

@@ -60,7 +60,7 @@ MonoBehaviour:
     spawnCount: 4
     cooldown: 2
   - waveCount: 2
-    enemyPrefab: {fileID: 1444851992901040901, guid: d9de4bbaec34239c98d0ec2ee5932a81, type: 3}
+    enemyPrefab: {fileID: 7592036924692036675, guid: 90777fdc292eb0a21ac21e9ef9c9f31f, type: 3}
     spawnCount: 4
     cooldown: 2
   timeBetweenWaves: 7

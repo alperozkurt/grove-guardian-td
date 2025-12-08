@@ -2,14 +2,8 @@ using UnityEngine;
 
 public class HealthBarBillboard : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
-
-    void Start()
+    void Update()
     {
-        
-    }
-    void LateUpdate()
-    {
-        transform.rotation = mainCamera.GetComponent<Transform>().rotation;;
+        transform.rotation = GameObject.FindGameObjectWithTag("MainCamera").transform.rotation;
     }
 }

@@ -1478,14 +1478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerFoundation
       objectReference: {fileID: 0}
-    - target: {fileID: 3991213582818906281, guid: 8b66b972179a7839eacb9cd58bad2850, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991213582818906281, guid: 8b66b972179a7839eacb9cd58bad2850, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
