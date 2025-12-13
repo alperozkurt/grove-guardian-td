@@ -6,19 +6,22 @@ public class TowerTrigger : MonoBehaviour
     [SerializeField] private GameObject towerToCreate;
     [SerializeField] private int towerCost;
     private Vector3 towerPosition;
+
+    private bool used = false;
     void OnTriggerEnter(Collider other)
     {
-        int coin = FindAnyObjectByType<GroveController>().coin;
-        if (other.gameObject.CompareTag("Player") && coin >= towerCost)
-        { 
-            CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
-            if(hud != null)
-            {
-                hud.RemoveCoins(towerCost);
-            }   
-            CreateTower();
-            gameObject.GetComponentInChildren<Canvas>().enabled = false;
-        }        
+        if(used) return;
+        if(!other.gameObject.CompareTag("Player")) return;
+        
+        GroveController grove = FindAnyObjectByType<GroveController>();
+        if (grove.coin < towerCost) return;
+
+        used = true;
+
+        FindFirstObjectByType<CoinDisplay>()?.RemoveCoins(towerCost);
+        CreateTower();
+
+        GetComponentInChildren<Canvas>().enabled = false;    
     }
 
     void CreateTower()
@@ -32,7 +35,7 @@ public class TowerTrigger : MonoBehaviour
 
     IEnumerator CreateTowerRoutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         Instantiate(towerToCreate, towerPosition, Quaternion.identity);
     }
 }

@@ -8,6 +8,8 @@ public class TowerController : MonoBehaviour
     private float fireCountDown = 0f;
     [SerializeField] private int maxBulletCount = 3;
     private float targetY;
+    private bool isReady = false;
+    public int currentBulletCount;
 
     void Start()
     {    
@@ -15,13 +17,14 @@ public class TowerController : MonoBehaviour
     }
     void Update()
     {
-        int currentBulletCount = GameObject.FindGameObjectsWithTag("Bullet").Length;
-
+        if(!isReady) return;
+        
         if(GameObject.FindWithTag("Enemy") == null) return;
 
         if(fireCountDown <= 0f && currentBulletCount < maxBulletCount)
         {
-            bulletController.SpawnBullet();
+            OnBulletCreated();
+            bulletController.SpawnBullet(this);
             fireCountDown = 1f / fireRate;
         }
         fireCountDown -= Time.deltaTime;
@@ -37,5 +40,16 @@ public class TowerController : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
         yield return null;
+        isReady = true;
+    }
+
+    public void OnBulletCreated()
+    {
+        currentBulletCount++;
+    }
+
+    public void OnBulletDestroyed()
+    {
+        currentBulletCount--;
     }
 }

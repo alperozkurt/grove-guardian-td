@@ -1564,7 +1564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1870768938802684579, guid: dc20161f3d0277a1a80a960df924e064, type: 3}
       propertyPath: m_text
-      value: Buy Tower 15 Coin
+      value: Buy Tower 10 Coin
       objectReference: {fileID: 0}
     - target: {fileID: 1870768938802684579, guid: dc20161f3d0277a1a80a960df924e064, type: 3}
       propertyPath: m_fontSize
@@ -1588,7 +1588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805781912208123637, guid: dc20161f3d0277a1a80a960df924e064, type: 3}
       propertyPath: towerCost
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

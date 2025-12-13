@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
-    public void SpawnBullet()
+    [SerializeField] private GameObject bulletPrefab;
+    public BulletAi SpawnBullet(TowerController owner)
     {
-        Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+        GameObject gameObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        BulletAi bullet = gameObject.GetComponent<BulletAi>();
+        bullet.Init(owner);
+
+        return bullet;
     }
 }
