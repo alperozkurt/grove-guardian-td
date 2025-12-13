@@ -4,29 +4,19 @@ using TMPro;
 public class CoinDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private GameObject grove;
-    private int currentCoins;
-
-    void Start()
+    [SerializeField] private GroveController grove;
+    void OnEnable()
     {
-        currentCoins = grove.GetComponent<GroveController>().coin;
-        UpdateCoinUI();
+        grove.CoinChanged += UpdateCoinUI;
     }
 
-    public void AddCoins(int amount)
+    void OnDisable()
     {
-        currentCoins += amount;
-        UpdateCoinUI();
+        grove.CoinChanged -= UpdateCoinUI;
     }
 
-    public void RemoveCoins(int amount)
+    private void UpdateCoinUI(int newCoinValue)
     {
-        currentCoins -= amount;
-        UpdateCoinUI();
-    }
-
-    private void UpdateCoinUI()
-    {
-        coinText.text = currentCoins.ToString();
+        coinText.text = newCoinValue.ToString();
     }
 }

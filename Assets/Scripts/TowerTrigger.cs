@@ -12,16 +12,16 @@ public class TowerTrigger : MonoBehaviour
     {
         if(used) return;
         if(!other.gameObject.CompareTag("Player")) return;
-        
+
         GroveController grove = FindAnyObjectByType<GroveController>();
-        if (grove.coin < towerCost) return;
-
+        if (grove.TrySpendCoins(towerCost))
+        {
         used = true;
-
-        FindFirstObjectByType<CoinDisplay>()?.RemoveCoins(towerCost);
         CreateTower();
 
-        GetComponentInChildren<Canvas>().enabled = false;    
+        GetComponentInChildren<Canvas>().enabled = false;  
+        }
+
     }
 
     void CreateTower()

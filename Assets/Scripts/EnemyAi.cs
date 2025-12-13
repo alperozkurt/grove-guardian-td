@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
+    [SerializeField] private GroveController grove;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
@@ -24,15 +24,13 @@ public class EnemyAi : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(
-            transform.position, target.transform.position, speed * Time.deltaTime);
+            transform.position, grove.transform.position, speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Base"))
         {
-            GroveController grove = collision.gameObject.GetComponent<GroveController>();
-
             if(grove != null)
             {
                 grove.DealDamageToBase(damageOnImpact);
@@ -59,11 +57,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Die()
     {
-        CoinDisplay hud = FindFirstObjectByType<CoinDisplay>();
-        if(hud != null)
-        {
-            hud.AddCoins(coinOnDeath);
-        }
+        grove.AddCoins(coinOnDeath);
         Destroy(gameObject);
     }
 }

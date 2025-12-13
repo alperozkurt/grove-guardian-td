@@ -311,6 +311,7 @@ MonoBehaviour:
   bulletController: {fileID: 5083275454773625632}
   fireRate: 1
   maxBulletCount: 3
+  currentBulletCount: 0
 --- !u!1 &7872443174114011250
 GameObject:
   m_ObjectHideFlags: 0
