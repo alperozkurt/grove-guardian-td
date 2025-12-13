@@ -3,7 +3,7 @@ using UnityEngine;
 public class GroveController : MonoBehaviour
 {
     [SerializeField] public float maxHealth;
-    [SerializeField] public float coin;
+    [SerializeField] public int coin;
     [SerializeField] private HealthBarController healthUI;
     public float currentHealth;  
 

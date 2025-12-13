@@ -5,7 +5,7 @@ public class CoinDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private GameObject grove;
-    private float currentCoins;
+    private int currentCoins;
 
     void Start()
     {
@@ -16,6 +16,12 @@ public class CoinDisplay : MonoBehaviour
     public void AddCoins(int amount)
     {
         currentCoins += amount;
+        UpdateCoinUI();
+    }
+
+    public void RemoveCoins(int amount)
+    {
+        currentCoins -= amount;
         UpdateCoinUI();
     }
 
