@@ -3,19 +3,22 @@ using UnityEngine;
 public class BulletAi : MonoBehaviour
 {
 
-    [SerializeField] public float bulletDamage;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private GameObject grove;
+    [SerializeField] public float bulletDamage = 10f;
+    [SerializeField] private float bulletSpeed = 25;
     private Transform target;
     private TowerController owner;
+    private Vector3 grovePosition;
 
-    public void Init(TowerController tower)
+    public void Init(TowerController tower, Vector3 grovePos, Transform initialTarget)
     {
         owner = tower;
-    }
-    void Start()
-    {
-        FindNearestEnemyToGrove();
+        grovePosition = grovePos;
+        target = initialTarget;
+
+        if(target == null)
+        {
+            FindNearestEnemyToGrove();
+        }
     }
 
     void Update()
@@ -23,6 +26,8 @@ public class BulletAi : MonoBehaviour
         if(target == null)
         {
             FindNearestEnemyToGrove();
+            
+            if(target == null) return; // if we still have no target return
         }
         transform.position = Vector3.MoveTowards(
             transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
@@ -32,9 +37,10 @@ public class BulletAi : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
+        if(enemies.Length == 0) return;
+
         Transform nearestEnemy = null;
         float shortestDistance = Mathf.Infinity;
-        Vector3 grovePosition = grove.transform.position;
 
         foreach(GameObject enemy in enemies)
         {

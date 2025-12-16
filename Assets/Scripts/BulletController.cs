@@ -7,8 +7,10 @@ public class BulletController : MonoBehaviour
     {
         GameObject gameObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
+        GroveController grove = FindFirstObjectByType<GroveController>();
+
         BulletAi bullet = gameObject.GetComponent<BulletAi>();
-        bullet.Init(owner);
+        bullet.Init(owner, grove.transform.position, null);
 
         return bullet;
     }

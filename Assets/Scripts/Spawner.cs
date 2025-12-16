@@ -1,29 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public List<Wave> waves;
-    public float timeBetweenWaves = 10f;
-
-
     void Start()
     {
         StartCoroutine(SummonAllWaves());
     }
     IEnumerator SummonAllWaves()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
         foreach(Wave currentWave in waves)
         {
-            Debug.Log("Current wave: " + currentWave.waveCount);
-            for(int i = 0; i < currentWave.spawnCount; i++)
+            Debug.Log("Starting: " + currentWave.waveName);
+            foreach(WaveGroup group in currentWave.waveGroups)
             {
-                SpawnEnemy(currentWave.enemyPrefab);
-                yield return new WaitForSeconds(currentWave.cooldown);
+                for(int i = 0; i < group.spawnCount; i++)
+                {
+                    SpawnEnemy(group.enemyPrefab);
+
+                    yield return new WaitForSeconds(group.spawnRate);
+                }
+
+                if(group.delayAfterGroup > 0)
+                {
+                    yield return new WaitForSeconds(group.delayAfterGroup);
+                }
             }
-            yield return new WaitForSeconds(timeBetweenWaves);
+
+            yield return new WaitForSeconds(currentWave.timeToNextWave);
         }
     }
 
@@ -34,10 +41,18 @@ public class Spawner : MonoBehaviour
 }
 
 [System.Serializable]
-public class Wave
-{
-    public int waveCount;
+public class WaveGroup
+{   
     public GameObject enemyPrefab;
     public int spawnCount;
-    public float cooldown;
+    public float spawnRate;
+    public float delayAfterGroup;
+}
+
+[System.Serializable]
+public class Wave
+{
+    public string waveName;
+    public List<WaveGroup> waveGroups;
+    public float timeToNextWave;
 }

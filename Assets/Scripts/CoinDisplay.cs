@@ -4,9 +4,12 @@ using TMPro;
 public class CoinDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private GroveController grove;
-    void OnEnable()
+    private GroveController grove;
+
+    void Start()
     {
+        grove = FindFirstObjectByType<GroveController>();
+        UpdateCoinUI(grove.coin);
         grove.CoinChanged += UpdateCoinUI;
     }
 

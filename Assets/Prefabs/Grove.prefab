@@ -124,4 +124,4 @@ MonoBehaviour:
   maxHealth: 100
   coin: 10
   healthUI: {fileID: 0}
-  currentHealth: 20
+  currentHealth: 100

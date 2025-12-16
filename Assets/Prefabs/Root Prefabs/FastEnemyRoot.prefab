@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62db1988453c60381bb5c40538d4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 6699617518992449108, guid: 0fc9ca7baa60f16ca9f9356cd6fc4dff, type: 3}
+  grove: {fileID: 6741292586780505172, guid: 0fc9ca7baa60f16ca9f9356cd6fc4dff, type: 3}
   speed: 5
   maxHealth: 25
   damageOnImpact: 15

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] private GroveController grove;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
@@ -10,19 +9,19 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private EnemyHealthBar healthBar;
     float currentHealth;
 
+    GroveController grove;
+    private bool isDead = false;
+
     void Start()
-    {   
+    {
+        grove = FindFirstObjectByType<GroveController>();
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     void Update()
     {
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-
+        if(grove != null)
         transform.position = Vector3.MoveTowards(
             transform.position, grove.transform.position, speed * Time.deltaTime);
     }
@@ -41,6 +40,8 @@ public class EnemyAi : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if(isDead) return;
+
         currentHealth -= damage;
 
         currentHealth = Mathf.Max(currentHealth, 0);
@@ -49,6 +50,7 @@ public class EnemyAi : MonoBehaviour
         {
             healthBar.UpdateHealthBar(currentHealth,maxHealth);
         }
+
         if(currentHealth <= 0)
         {
             Die();
@@ -57,7 +59,15 @@ public class EnemyAi : MonoBehaviour
 
     private void Die()
     {
-        grove.AddCoins(coinOnDeath);
+        if(isDead) return;
+
+        isDead = true;
+
+        if(grove != null)
+        {
+            grove.AddCoins(coinOnDeath);
+        }
+        
         Destroy(gameObject);
     }
 }
