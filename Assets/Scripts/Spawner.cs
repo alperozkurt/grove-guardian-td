@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator SummonAllWaves()
     {
+        // Initial wait
+        yield return new WaitForSeconds(5f);
         foreach(Wave currentWave in waves)
         {
             Debug.Log("Starting: " + currentWave.waveName);
