@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4892589972276003213}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,4 +123,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 10
   bulletSpeed: 25
-  grove: {fileID: 6699617518992449108, guid: 0fc9ca7baa60f16ca9f9356cd6fc4dff, type: 3}
