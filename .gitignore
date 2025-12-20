@@ -23,6 +23,8 @@ assets/plugins/PlasticSCM*
 assets/addressableassetsdata/*/*.bin*
 assets/streamingassets/*/aa/*
 Assets/Imported Assets/*
+Assets/AlienAnimal/
+Assets/unitypackage/
 
 ########################################
 # System Files
