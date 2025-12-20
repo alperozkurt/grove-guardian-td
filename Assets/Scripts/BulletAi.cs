@@ -9,26 +9,21 @@ public class BulletAi : MonoBehaviour
     private TowerController owner;
     private Vector3 grovePosition;
 
-    public void Init(TowerController tower, Vector3 grovePos, Transform initialTarget)
+    public void Init(TowerController tower, Vector3 grovePos)
     {
         owner = tower;
         grovePosition = grovePos;
-        target = initialTarget;
 
-        if(target == null)
-        {
-            FindNearestEnemyToGrove();
-        }
+        FindNearestEnemyToGrove();
     }
 
     void Update()
     {
-        if(target == null)
+        if(!target.CompareTag("Enemy"))
         {
-            FindNearestEnemyToGrove();
-            
-            if(target == null) return; // if we still have no target return
+            Destroy(gameObject);
         }
+        
         transform.position = Vector3.MoveTowards(
             transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
     }

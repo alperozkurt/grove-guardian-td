@@ -57,12 +57,12 @@ MonoBehaviour:
   waves:
   - waveName: Easy wave
     waveGroups:
-    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 4
+    - enemyPrefab: {fileID: 177940, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 3}
+      spawnCount: 7
       spawnRate: 1
       delayAfterGroup: 2
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 4
+      spawnCount: 5
       spawnRate: 1
       delayAfterGroup: 2
     timeToNextWave: 15

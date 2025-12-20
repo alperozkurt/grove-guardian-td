@@ -11,6 +11,7 @@ public class EnemyAi : MonoBehaviour
     Vector3 target;
     GroveController grove;
     private bool isDead = false;
+    Animator animator;
 
     void Start()
     {
@@ -19,26 +20,28 @@ public class EnemyAi : MonoBehaviour
         target = new Vector3(grove.transform.position.x, gameObject.transform.position.y, grove.transform.position.z);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        if(isDead) return;
+
         if(grove != null)
         transform.position = Vector3.MoveTowards(
             transform.position, target, speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Base"))
+        if(!other.gameObject.CompareTag("Base")) return;
+        if(grove != null)
         {
-            if(grove != null)
-            {
-                grove.DealDamageToBase(damageOnImpact);
-            }
-
-            Die();
+            grove.AddCoins(coinOnDeath);
+            grove.DealDamageToBase(damageOnImpact);
         }
+        Destroy(gameObject);
+        
     }
     public void TakeDamage(float damage)
     {
@@ -65,11 +68,24 @@ public class EnemyAi : MonoBehaviour
 
         isDead = true;
 
+        GetComponentInChildren<Canvas>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.tag = "Untagged";
+
+        try
+        {
+            animator.SetTrigger("Die");
+        }
+        catch
+        {
+            Debug.Log("GameObejct does not have a death aniamtion");
+        }
+       
         if(grove != null)
         {
             grove.AddCoins(coinOnDeath);
         }
-        
-        Destroy(gameObject);
+
+        Destroy(gameObject, 2f);
     }
 }

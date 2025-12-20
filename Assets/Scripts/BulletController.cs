@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
         GroveController grove = FindFirstObjectByType<GroveController>();
 
         BulletAi bullet = gameObject.GetComponent<BulletAi>();
-        bullet.Init(owner, grove.transform.position, null);
+        bullet.Init(owner, grove.transform.position);
 
         return bullet;
     }
