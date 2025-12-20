@@ -41,9 +41,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2488448579704294514}
-  - component: {fileID: 4182871829482886007}
   - component: {fileID: 3342054323152403700}
   - component: {fileID: 1782516810264247767}
+  - component: {fileID: 7147969256741596449}
+  - component: {fileID: 8213270479403974316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -67,31 +68,6 @@ Transform:
   - {fileID: 569417875436324203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &4182871829482886007
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4985178971633595292}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3342054323152403700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  rotationSpeed: 3
-  gravity: -9.81
+  rotationSpeed: 10
   cameraTransform: {fileID: 0}
 --- !u!114 &1782516810264247767
 MonoBehaviour:
@@ -138,6 +113,54 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &7147969256741596449
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985178971633595292}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
+--- !u!65 &8213270479403974316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985178971633595292}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &8839351831876502821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,10 +216,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5957507013195695769, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7497126129696854236}
   m_SourcePrefab: {fileID: 100100000, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
 --- !u!4 &2476418021430199090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6410221756858730007, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
   m_PrefabInstance: {fileID: 8839351831876502821}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2884272677803983804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5957507013195695769, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
+  m_PrefabInstance: {fileID: 8839351831876502821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7497126129696854236
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2884272677803983804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4175726406976504967, guid: c349c914fdd739041b58a931c9682720, type: 3}

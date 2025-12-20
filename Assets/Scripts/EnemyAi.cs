@@ -8,13 +8,15 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private int coinOnDeath = 2;
     [SerializeField] private EnemyHealthBar healthBar;
     float currentHealth;
-
+    Vector3 target;
     GroveController grove;
     private bool isDead = false;
 
     void Start()
     {
         grove = FindFirstObjectByType<GroveController>();
+        gameObject.transform.LookAt(grove.transform);
+        target = new Vector3(grove.transform.position.x, gameObject.transform.position.y, grove.transform.position.z);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
@@ -23,7 +25,7 @@ public class EnemyAi : MonoBehaviour
     {
         if(grove != null)
         transform.position = Vector3.MoveTowards(
-            transform.position, grove.transform.position, speed * Time.deltaTime);
+            transform.position, target, speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)

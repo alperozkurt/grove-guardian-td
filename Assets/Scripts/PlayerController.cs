@@ -1,28 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(PlayerInput))] // Forces PlayerInput to exist
+[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
-    [SerializeField] private float gravity = -9.81f;
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
 
     // Internal Variables
-    private CharacterController controller;
+    private Rigidbody rigidBody; // Renamed from 'controller' for clarity
     private PlayerInput playerInput;
     private InputAction moveAction;
     private Vector2 inputVector;
-    private Vector3 velocity; // For gravity
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        rigidBody = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
 
         // Auto-find main camera
@@ -31,24 +29,31 @@ public class PlayerController : MonoBehaviour
             cameraTransform = Camera.main.transform;
         }
 
-        // SETUP INPUT
-        // IMPORTANT: The string "Move" must match the Action Name in your Input Action Asset exactly!
+        // Setup Input
         moveAction = playerInput.actions["Move"];
+
+        // CONFIGURATION: Ensure Rigidbody settings are correct for a character
+        rigidBody.freezeRotation = true; // Prevents character from falling over
+        rigidBody.useGravity = true;     // Let Unity handle gravity
+        rigidBody.interpolation = RigidbodyInterpolation.Interpolate; // Smoothes movement
     }
 
     private void Start()
     {
-        // --- CURSOR LOCKING ---
-        // This hides the cursor and locks it to the center of the screen
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void Update()
     {
+        // Inputs are read every frame (Update) to prevent missing clicks/taps
         ReadInput();
+    }
+
+    private void FixedUpdate()
+    {
+        // Physics are applied in FixedUpdate
         MovePlayer();
-        ApplyGravity();
     }
 
     private void ReadInput()
@@ -56,47 +61,37 @@ public class PlayerController : MonoBehaviour
         if (moveAction != null)
         {
             inputVector = moveAction.ReadValue<Vector2>();
-            
-            // UNCOMMENT THE LINE BELOW TO DEBUG
-            // Debug.Log("Input detected: " + inputVector); 
         }
     }
 
     private void MovePlayer()
     {
-        // 1. If no input, stop processing horizontal movement
-        if (inputVector.magnitude < 0.1f) return;
-
-        // 2. Camera Direction Math
+        // 1. Calculate Camera Direction
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
 
+        // Flatten direction to prevent flying up/down when looking up/down
         camForward.y = 0;
         camRight.y = 0;
         camForward.Normalize();
         camRight.Normalize();
 
-        Vector3 targetDirection = (camForward * inputVector.y + camRight * inputVector.x).normalized;
+        Vector3 moveDirection = (camForward * inputVector.y + camRight * inputVector.x).normalized;
 
-        // 3. Move
-        controller.Move(targetDirection * moveSpeed * Time.deltaTime);
+        // 2. Apply Velocity (Movement)
+        // We preserve the current Y velocity so gravity continues to work
+        Vector3 targetVelocity = moveDirection * moveSpeed;
+        targetVelocity.y = rigidBody.linearVelocity.y; 
 
-        // 4. Rotate
-        if (targetDirection != Vector3.zero)
+        rigidBody.linearVelocity = targetVelocity;
+
+        // 3. Apply Rotation
+        if (moveDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            // using MoveRotation is smoother for Physics objects than transform.rotation
+            Quaternion nextRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            rigidBody.MoveRotation(nextRotation);
         }
-    }
-
-    private void ApplyGravity()
-    {
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f; 
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }

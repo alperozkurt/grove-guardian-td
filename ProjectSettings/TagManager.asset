@@ -16,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Environment
+  - Ground
   - 
   - 
   - 
@@ -48,3 +48,4 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  - Ground

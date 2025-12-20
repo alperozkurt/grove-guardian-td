@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 724559839657951760}
   - component: {fileID: 1586614665073830757}
   - component: {fileID: 1034645298331193502}
+  - component: {fileID: 2747025139794466540}
   m_Layer: 0
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2747025139794466540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701853460797761737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c008510555b194f9fabee461ce9de484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4183922194048385864
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450953718212736841}
   - component: {fileID: 2349709062806382536}
+  - component: {fileID: 6139120533760320531}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -266,6 +280,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6139120533760320531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482758270060578935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dcbb98af4effc6f93c541e103b465b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2349709062806382536}
 --- !u!1 &7465355751395459331
 GameObject:
   m_ObjectHideFlags: 0
