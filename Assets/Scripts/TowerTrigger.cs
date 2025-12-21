@@ -6,6 +6,8 @@ public class TowerTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject towerToCreate;
     [SerializeField] private int towerCost;
+    [SerializeField] private AudioClip towerCreationAudio;
+    private AudioSource audioSource;
     private Vector3 towerPosition;
     private bool used = false;
     private TextMeshProUGUI towerCostText;
@@ -16,6 +18,7 @@ public class TowerTrigger : MonoBehaviour
         towerCostText = GetComponentInChildren<TextMeshProUGUI>();
         grove = FindAnyObjectByType<GroveController>();
         grove.TowerCountChanged += UpdateTowerCost;
+        audioSource = GetComponent<AudioSource>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -41,6 +44,7 @@ public class TowerTrigger : MonoBehaviour
     {
         grove.AddTowerCount();
         yield return new WaitForSeconds(1.5f);
+        audioSource.PlayOneShot(towerCreationAudio);
         Instantiate(towerToCreate, towerPosition, Quaternion.identity);
     }
 

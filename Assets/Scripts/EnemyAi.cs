@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
+    [Header("Enemy Stats")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
     [SerializeField] private int coinOnDeath = 2;
     [SerializeField] private EnemyHealthBar healthBar;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip deathSound;
     float currentHealth;
     Vector3 target;
     GroveController grove;
@@ -17,6 +21,7 @@ public class EnemyAi : MonoBehaviour
     private float defaultSpeed;
     private bool isSlowed;
     private GameObject activeSlowEffect;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -34,7 +39,7 @@ public class EnemyAi : MonoBehaviour
         {
             animation = GetComponent<Animation>();
         }
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -113,7 +118,10 @@ public class EnemyAi : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         gameObject.tag = "Untagged";
         if(activeSlowEffect != null) Destroy(activeSlowEffect);
-
+        if(audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
         try
         {
             animator.SetTrigger("Die");
