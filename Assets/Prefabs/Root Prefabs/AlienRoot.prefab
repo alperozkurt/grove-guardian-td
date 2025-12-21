@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62db1988453c60381bb5c40538d4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   maxHealth: 40
   damageOnImpact: 15
   coinOnDeath: 3
@@ -111,6 +111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2580776307329566920}
     m_Modifications:
+    - target: {fileID: 1323690675411464971, guid: e5b14c454eaa3e8fab2f4a730075dd7d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1323690675420749033, guid: e5b14c454eaa3e8fab2f4a730075dd7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

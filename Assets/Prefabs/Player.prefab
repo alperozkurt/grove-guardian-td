@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1782516810264247767}
   - component: {fileID: 7147969256741596449}
   - component: {fileID: 8213270479403974316}
+  - component: {fileID: 5496698991318091567}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -161,6 +162,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.8, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5496698991318091567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985178971633595292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d3c7ea3cc73753cbe3cc1b589061e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 20
+  cooldownDuration: 10
+  inputActionName: Blizzard
 --- !u!1001 &8839351831876502821
 PrefabInstance:
   m_ObjectHideFlags: 0

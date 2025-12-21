@@ -7,39 +7,37 @@ public class BulletAi : MonoBehaviour
     [SerializeField] private float bulletSpeed = 25;
     private Transform target;
     private TowerController owner;
-    private Vector3 grovePosition;
 
-    public void Init(TowerController tower, Vector3 grovePos)
+    public void Init(TowerController tower)
     {
         owner = tower;
-        grovePosition = grovePos;
-
-        FindNearestEnemyToGrove();
+        target = FindNearestEnemyToTower();
     }
 
     void Update()
     {
         if(!target.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            owner.OnBulletDestroyed();
+            Destroy(gameObject); 
         }
         
         transform.position = Vector3.MoveTowards(
             transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
     }
 
-    void FindNearestEnemyToGrove()
+    Transform FindNearestEnemyToTower()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if(enemies.Length == 0) return;
+        if(enemies.Length == 0) return null;
 
         Transform nearestEnemy = null;
         float shortestDistance = Mathf.Infinity;
 
         foreach(GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(enemy.transform.position, grovePosition);
+            float distanceToEnemy = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
 
             if(distanceToEnemy < shortestDistance)
             {
@@ -47,7 +45,7 @@ public class BulletAi : MonoBehaviour
                 shortestDistance = distanceToEnemy;
             }
         }
-        target = nearestEnemy;
+        return nearestEnemy;
     }
 
     void OnTriggerEnter(Collider other)

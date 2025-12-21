@@ -12,6 +12,7 @@ public class EnemyAi : MonoBehaviour
     GroveController grove;
     private bool isDead = false;
     Animator animator;
+    new Animation animation;
 
     void Start()
     {
@@ -20,7 +21,15 @@ public class EnemyAi : MonoBehaviour
         target = new Vector3(grove.transform.position.x, gameObject.transform.position.y, grove.transform.position.z);
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        animator = gameObject.GetComponentInChildren<Animator>();
+        if(GetComponentInChildren<Animator>() != null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        else
+        {
+            animation = GetComponent<Animation>();
+        }
+        
     }
 
     void Update()
@@ -69,7 +78,7 @@ public class EnemyAi : MonoBehaviour
         isDead = true;
 
         GetComponentInChildren<Canvas>().enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         gameObject.tag = "Untagged";
 
         try
@@ -79,6 +88,15 @@ public class EnemyAi : MonoBehaviour
         catch
         {
             Debug.Log("GameObejct does not have a death aniamtion");
+        }
+
+        if(animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+        else
+        {
+            animation.CrossFade("Anim_Death");
         }
        
         if(grove != null)

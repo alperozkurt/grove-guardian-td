@@ -1,0 +1,99 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(PlayerInput))]
+public class BlizzardSkill : MonoBehaviour
+{
+    [Header("Skill Settings")]
+    [SerializeField] private float damageAmount = 20f;
+    [SerializeField] private float cooldownDuration = 10f;
+    [SerializeField] private string inputActionName = "Blizzard";
+
+    [Header("UI Reference")]
+    [SerializeField] private Image cooldownOverlay;
+
+    // Internal Variables
+    private PlayerInput playerInput;
+    private InputAction skillAction;
+    private float currentCooldownTimer = 0f;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+
+        skillAction = playerInput.actions[inputActionName];
+
+        if(cooldownOverlay != null)
+        {
+            cooldownOverlay.fillAmount = 0f;
+        }
+    }
+
+    private void Update()
+    {
+        // 1. Handle Cooldown Timer
+        if (currentCooldownTimer > 0)
+        {
+            currentCooldownTimer -= Time.deltaTime;
+
+            // Update the UI Fill Amount
+            if (cooldownOverlay != null)
+            {
+                // Calculate percentage (0.0 to 1.0)
+                cooldownOverlay.fillAmount = currentCooldownTimer / cooldownDuration;
+            }
+        }
+        else
+        {
+            // Ensure it stays at 0 when finished
+            if (cooldownOverlay != null) 
+            {
+                cooldownOverlay.fillAmount = 0f;
+            }
+        }
+
+        // 2. Read Input
+        if (skillAction != null && skillAction.WasPressedThisFrame())
+        {
+            AttemptToCast();
+        }
+    }
+
+    private void AttemptToCast()
+    {
+        if (currentCooldownTimer > 0) return;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        if (enemies.Length == 0)
+        {
+            Debug.Log("No enemies found.");
+            return; 
+        }
+
+        ActivateSkill(enemies);
+        
+        // Start Cooldown
+        currentCooldownTimer = cooldownDuration;
+        
+        // Immediately set UI to full
+        if (cooldownOverlay != null)
+        {
+            cooldownOverlay.fillAmount = 1f;
+        }
+    }
+
+    private void ActivateSkill(GameObject[] enemies)
+    {
+        Debug.Log("Blizzard Activated!");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
+            if (enemyAi != null)
+            {
+                enemyAi.TakeDamage(damageAmount);
+            }
+        }
+    }
+}
