@@ -108,7 +108,7 @@ public class BlizzardSkill : MonoBehaviour
             if (enemyAi != null)
             {
                 enemyAi.TakeDamage(damageAmount);
-                enemyAi.ApplySlow(slowPercantage,slowDuration, freezeParticlePrefab);
+                enemyAi.ApplySlow(slowPercantage, slowDuration, freezeParticlePrefab);
             }
         }
     }

@@ -4,15 +4,19 @@ using UnityEngine;
 public class TowerController : MonoBehaviour
 {
     [SerializeField] private BulletController bulletController;
-    public float fireRate = 1f;
-    private float fireCountDown = 0f;
     [SerializeField] private int maxBulletCount = 3;
+    public float defaultFireRate = 1f;
+    public float fireRate;
+    private float fireCountDown = 0f;
     private float targetY;
     private bool isReady = false;
     public int currentBulletCount;
+    private bool isBoosted = false;
+    private GameObject activeBoostEffect;
 
     void Start()
-    {    
+    {
+        fireRate = defaultFireRate;     
         StartCoroutine(FinishCreating());
     }
     void Update()
@@ -51,5 +55,29 @@ public class TowerController : MonoBehaviour
     public void OnBulletDestroyed()
     {
         currentBulletCount--;
+    }
+
+    public void ApplyBoost(float boostRate, float duration, GameObject effectPrefab)
+    {
+        if (isBoosted)
+        {
+            StopCoroutine("IncreaseFireRateCoroutine");
+            if(activeBoostEffect != null) Destroy(activeBoostEffect);
+        }
+        StartCoroutine(IncreaseFireRateCoroutine(boostRate,duration, effectPrefab));
+    }
+
+    IEnumerator IncreaseFireRateCoroutine(float boostRate, float duration, GameObject effectPrefab)
+    {
+        isBoosted = true;
+        fireRate = defaultFireRate * boostRate;
+        if(effectPrefab != null)
+        {
+            activeBoostEffect = Instantiate(effectPrefab, transform.position, transform.rotation);
+        }
+        yield return new WaitForSeconds(duration);
+        if(activeBoostEffect != null) Destroy(activeBoostEffect);
+        fireRate = defaultFireRate;
+        isBoosted = false;
     }
 }

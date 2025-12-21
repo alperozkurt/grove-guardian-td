@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7147969256741596449}
   - component: {fileID: 8213270479403974316}
   - component: {fileID: 5496698991318091567}
+  - component: {fileID: 2257455469505770967}
   - component: {fileID: 1777962975298746522}
   m_Layer: 0
   m_Name: Player
@@ -181,7 +182,26 @@ MonoBehaviour:
   slowPercantage: 0.6
   slowDuration: 4
   freezeParticlePrefab: {fileID: 3106182021380325047, guid: 86e5a37f792cf848a92bb9090453899b, type: 3}
-  blizzardSound: {fileID: 8300000, guid: 66e7005dc158ba1e09fa5be2344ed577, type: 3}
+  blizzardSound: {fileID: 8300000, guid: dc0c096ae917ef8a1a38bec9a2c433f3, type: 3}
+  cooldownOverlay: {fileID: 0}
+--- !u!114 &2257455469505770967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985178971633595292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7101cbeb76ef115d4b8460b6d8ca7a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAmount: 1.3
+  boostDuration: 5
+  cooldownDuration: 10
+  inputActionName: NatureBoost
+  boostParticlePrefab: {fileID: 2079218250412454697, guid: 8a78cd70669bd637c9a93aa34b09a04a, type: 3}
+  boostSound: {fileID: 8300000, guid: ba64dc432bbc79f1e8089d9cdf09e426, type: 3}
   cooldownOverlay: {fileID: 0}
 --- !u!82 &1777962975298746522
 AudioSource:

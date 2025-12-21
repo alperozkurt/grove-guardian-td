@@ -2100,6 +2100,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2257455469505770967, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
+      propertyPath: cooldownOverlay
+      value: 
+      objectReference: {fileID: 539259861}
     - target: {fileID: 2488448579704294514, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 90
@@ -2148,10 +2152,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5496698991318091567, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
-      propertyPath: blizzardSound
-      value: 
-      objectReference: {fileID: 8300000, guid: dc0c096ae917ef8a1a38bec9a2c433f3, type: 3}
     - target: {fileID: 5496698991318091567, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
       propertyPath: cooldownOverlay
       value: 
