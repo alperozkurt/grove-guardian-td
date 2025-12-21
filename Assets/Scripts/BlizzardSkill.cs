@@ -10,12 +10,21 @@ public class BlizzardSkill : MonoBehaviour
     [SerializeField] private float cooldownDuration = 10f;
     [SerializeField] private string inputActionName = "Blizzard";
 
+    [Header("Slow Effect")]
+    [SerializeField] private float slowPercantage = 0.6f;
+    [SerializeField] private float slowDuration = 4f;
+    [SerializeField] private GameObject freezeParticlePrefab;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip blizzardSound;
+
     [Header("UI Reference")]
     [SerializeField] private Image cooldownOverlay;
 
     // Internal Variables
     private PlayerInput playerInput;
     private InputAction skillAction;
+    private AudioSource audioSource;
     private float currentCooldownTimer = 0f;
 
     private void Awake()
@@ -23,6 +32,7 @@ public class BlizzardSkill : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
 
         skillAction = playerInput.actions[inputActionName];
+        audioSource = GetComponent<AudioSource>();
 
         if(cooldownOverlay != null)
         {
@@ -76,6 +86,11 @@ public class BlizzardSkill : MonoBehaviour
         
         // Start Cooldown
         currentCooldownTimer = cooldownDuration;
+
+        if(audioSource != null && blizzardSound != null)
+        {
+            audioSource.PlayOneShot(blizzardSound);
+        }
         
         // Immediately set UI to full
         if (cooldownOverlay != null)
@@ -93,6 +108,7 @@ public class BlizzardSkill : MonoBehaviour
             if (enemyAi != null)
             {
                 enemyAi.TakeDamage(damageAmount);
+                enemyAi.ApplySlow(slowPercantage,slowDuration, freezeParticlePrefab);
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
@@ -13,9 +14,13 @@ public class EnemyAi : MonoBehaviour
     private bool isDead = false;
     Animator animator;
     new Animation animation;
+    private float defaultSpeed;
+    private bool isSlowed;
+    private GameObject activeSlowEffect;
 
     void Start()
     {
+        defaultSpeed = speed;
         grove = FindFirstObjectByType<GroveController>();
         gameObject.transform.LookAt(grove.transform);
         target = new Vector3(grove.transform.position.x, gameObject.transform.position.y, grove.transform.position.z);
@@ -71,6 +76,33 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
+    public void ApplySlow(float slowPercantage, float duration, GameObject effectPrefab)
+    {
+        if (isSlowed)
+        {
+            StopCoroutine("SlowCoroutine");
+            if(activeSlowEffect != null) Destroy(activeSlowEffect);
+        }
+        StartCoroutine(SlowCoroutine(slowPercantage,duration, effectPrefab));
+    }
+
+    private IEnumerator SlowCoroutine(float slowPercantage, float duration, GameObject effectPrefab)
+    {
+        isSlowed = true;
+
+        speed = defaultSpeed * slowPercantage;
+
+        if(effectPrefab != null)
+        {
+            activeSlowEffect = Instantiate(effectPrefab, transform.position, transform.rotation);
+            activeSlowEffect.transform.SetParent(this.transform);
+        }
+        yield return new WaitForSeconds(duration);
+        if(activeSlowEffect != null) Destroy(activeSlowEffect);
+        speed = defaultSpeed;
+        isSlowed = false;
+    }
+
     private void Die()
     {
         if(isDead) return;
@@ -80,6 +112,7 @@ public class EnemyAi : MonoBehaviour
         GetComponentInChildren<Canvas>().enabled = false;
         GetComponent<Collider>().enabled = false;
         gameObject.tag = "Untagged";
+        if(activeSlowEffect != null) Destroy(activeSlowEffect);
 
         try
         {

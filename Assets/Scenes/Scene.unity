@@ -2026,14 +2026,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 8795467516725802464, guid: 0d8bc5fba5f330fe88b320949fede2bc, type: 3}
-      propertyPath: waves.Array.data[0].timeToNextWave
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 8795467516725802464, guid: 0d8bc5fba5f330fe88b320949fede2bc, type: 3}
-      propertyPath: waves.Array.data[1].timeToNextWave
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2157,6 +2149,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5496698991318091567, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
+      propertyPath: blizzardSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dc0c096ae917ef8a1a38bec9a2c433f3, type: 3}
+    - target: {fileID: 5496698991318091567, guid: 0ababc110c374287a954e6547feae3cb, type: 3}
       propertyPath: cooldownOverlay
       value: 
       objectReference: {fileID: 144495358}
@@ -2273,10 +2269,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3450635154666527923, guid: 1125142cd1f40ea6e8ac7ece6eec6ad2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073738334391873434, guid: 1125142cd1f40ea6e8ac7ece6eec6ad2, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6467945039147424950, guid: 1125142cd1f40ea6e8ac7ece6eec6ad2, type: 3}
