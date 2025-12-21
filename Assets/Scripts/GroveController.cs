@@ -7,7 +7,9 @@ public class GroveController : MonoBehaviour
     [SerializeField] public int coin;
     [SerializeField] private HealthBarController healthUI;
     public float currentHealth;
+    public int towerCount = 0;
     public event Action<int> CoinChanged;
+    public event Action<int> TowerCountChanged;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class GroveController : MonoBehaviour
         }
 
         CoinChanged?.Invoke(coin);
+        TowerCountChanged?.Invoke(towerCount);
     }
 
     public void DealDamageToBase(float damage)
@@ -49,5 +52,11 @@ public class GroveController : MonoBehaviour
         coin -= amount;
         CoinChanged?.Invoke(coin);
         return true;
+    }
+
+    public void AddTowerCount()
+    {
+        towerCount ++;
+        TowerCountChanged?.Invoke(towerCount);
     }
 }

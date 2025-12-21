@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  coin: 10
+  coin: 20
   healthUI: {fileID: 0}
   currentHealth: 100
 --- !u!54 &4052689760352680310
