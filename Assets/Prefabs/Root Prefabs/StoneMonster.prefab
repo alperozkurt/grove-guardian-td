@@ -292,10 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62db1988453c60381bb5c40538d4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 14
   maxHealth: 25
   damageOnImpact: 10
-  coinOnDeath: 2
+  coinOnDeath: 1
   healthBar: {fileID: 1565161496169689959}
   deathSound: {fileID: 8300000, guid: ac45ae34729ff7e6cae02e5e596aaf4a, type: 3}
 --- !u!135 &3353119570275825201

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3076488826520239738}
   - component: {fileID: 8795467516725802464}
   - component: {fileID: 8981438512725925463}
+  - component: {fileID: 6578708849302798845}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Environment
@@ -54,28 +55,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662a5cab4d0d5f4b282953f876192c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveStartAudio: {fileID: 8300000, guid: 0fbc285f61b38879d83d9b041a06629c, type: 3}
   waves:
   - waveName: Easy wave
     waveGroups:
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
-      spawnCount: 7
-      spawnRate: 1
-      delayAfterGroup: 2
+      spawnCount: 8
+      spawnRate: 0.5
+      delayAfterGroup: 4
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
-      spawnCount: 5
-      spawnRate: 1
-      delayAfterGroup: 2
+      spawnCount: 8
+      spawnRate: 0.5
+      delayAfterGroup: 4
     timeToNextWave: 15
   - waveName: Medium wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 3
-      spawnRate: 1
-      delayAfterGroup: 1
+      spawnCount: 5
+      spawnRate: 0.7
+      delayAfterGroup: 4
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 3
+      spawnCount: 5
+      spawnRate: 0.7
+      delayAfterGroup: 4
+    timeToNextWave: 20
+  - waveName: Hard wave
+    waveGroups:
+    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
+      spawnCount: 5
+      spawnRate: 0.7
+      delayAfterGroup: 4
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 15
       spawnRate: 1
-      delayAfterGroup: 1
+      delayAfterGroup: 10
+    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
+      spawnCount: 5
+      spawnRate: 0.7
+      delayAfterGroup: 4
     timeToNextWave: 60
 --- !u!65 &8981438512725925463
 BoxCollider:
@@ -98,3 +115,100 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &6578708849302798845
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3150222668589061369}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

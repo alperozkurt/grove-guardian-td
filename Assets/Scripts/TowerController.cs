@@ -12,6 +12,7 @@ public class TowerController : MonoBehaviour
 
     private float fireCountDown = 0f;
     private float defaultFireRate;
+    private float defaultRange;
     private Transform currentTarget;
     public int currentBulletCount;
     private bool isReady = false;
@@ -20,7 +21,8 @@ public class TowerController : MonoBehaviour
 
     void Start()
     {
-        defaultFireRate = fireRate;     
+        defaultFireRate = fireRate;
+        defaultRange = range;   
         StartCoroutine(FinishCreating());
     }
     void Update()
@@ -55,7 +57,7 @@ public class TowerController : MonoBehaviour
         if(currentTarget != null)
         {
             float distance = Vector3.Distance(transform.position, currentTarget.position);
-            if (distance > range || !currentTarget.gameObject.activeInHierarchy)
+            if (distance > range || !currentTarget.gameObject.activeInHierarchy || !currentTarget.CompareTag("Enemy"))
             {
                 currentTarget = null;
             }
@@ -110,12 +112,14 @@ public class TowerController : MonoBehaviour
     IEnumerator IncreaseFireRateCoroutine(float boostRate, float duration, GameObject effectPrefab)
     {
         fireRate = defaultFireRate * boostRate;
+        range = defaultRange * boostRate;
         if(effectPrefab != null)
         {
             activeBoostEffect = Instantiate(effectPrefab, transform.position, transform.rotation);
         }
         yield return new WaitForSeconds(duration);
         fireRate = defaultFireRate;
+        range = defaultRange;
         if(activeBoostEffect != null) Destroy(activeBoostEffect);
     }
 

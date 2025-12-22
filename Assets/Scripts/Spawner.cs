@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private AudioClip waveStartAudio;
+    private AudioSource audioSource;
     public List<Wave> waves;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        
         StartCoroutine(SummonAllWaves());
     }
     IEnumerator SummonAllWaves()
     {
         // Initial wait
         yield return new WaitForSeconds(5f);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(waveStartAudio);
+        }
         foreach(Wave currentWave in waves)
         {
             Debug.Log("Starting: " + currentWave.waveName);
