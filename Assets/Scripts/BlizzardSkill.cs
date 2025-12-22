@@ -7,7 +7,7 @@ public class BlizzardSkill : MonoBehaviour
 {
     [Header("Skill Settings")]
     [SerializeField] private float damageAmount = 20f;
-    [SerializeField] private float cooldownDuration = 10f;
+    [SerializeField] private float cooldownDuration = 15f;
     [SerializeField] private string inputActionName = "Blizzard";
 
     [Header("Slow Effect")]

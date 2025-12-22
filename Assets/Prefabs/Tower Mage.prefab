@@ -308,9 +308,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d534083de761ce205884274f7641dd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletController: {fileID: 5083275454773625632}
+  range: 30
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   fireRate: 1
   maxBulletCount: 3
+  bulletController: {fileID: 5083275454773625632}
   currentBulletCount: 0
 --- !u!1 &7872443174114011250
 GameObject:

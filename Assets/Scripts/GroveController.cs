@@ -59,4 +59,9 @@ public class GroveController : MonoBehaviour
         towerCount ++;
         TowerCountChanged?.Invoke(towerCount);
     }
+
+    public int GetTowerCount()
+    {
+        return towerCount;
+    }
 }

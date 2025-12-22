@@ -4,54 +4,81 @@ using TMPro;
 
 public class TowerTrigger : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private GameObject towerToCreate;
-    [SerializeField] private int towerCost;
+    [SerializeField] private int baseTowerCost = 20;
     [SerializeField] private AudioClip towerCreationAudio;
+    private int currentCost;
     private AudioSource audioSource;
-    private Vector3 towerPosition;
-    private bool used = false;
+    //private Vector3 towerPosition;
+    private bool isUsed = false;
     private TextMeshProUGUI towerCostText;
     GroveController grove;
     void Start()
     {
-        towerCost = 20;
+        currentCost = baseTowerCost;
+
         towerCostText = GetComponentInChildren<TextMeshProUGUI>();
-        grove = FindAnyObjectByType<GroveController>();
-        grove.TowerCountChanged += UpdateTowerCost;
         audioSource = GetComponent<AudioSource>();
+
+        grove = FindAnyObjectByType<GroveController>();
+
+        if(grove != null)
+        {
+            grove.TowerCountChanged += UpdateTowerCost;
+            UpdateTowerCost(grove.GetTowerCount());
+        }
+        
+        
     }
     void OnTriggerEnter(Collider other)
     {
-        if(used) return;
-        if(!other.gameObject.CompareTag("Player")) return;
+        if(isUsed || !other.gameObject.CompareTag("Player")) return;
 
-        if (grove.TrySpendCoins(towerCost))
+        if (grove != null && grove.TrySpendCoins(currentCost))
         {
-        used = true;
-        CreateTower();
-        GetComponentInChildren<Canvas>().enabled = false;  
+            isUsed = true;
+            StartCoroutine(CreateTowerRoutine());
+
+            GetComponentInChildren<Canvas>().enabled = false;  
         }
-    }
-    void CreateTower()
-    {
-        towerPosition = new Vector3(
-            gameObject.GetComponent<Transform>().position.x,
-            -towerToCreate.transform.localScale.y,
-            gameObject.GetComponent<Transform>().position.z);
-        StartCoroutine(CreateTowerRoutine());   
     }
     IEnumerator CreateTowerRoutine()
     {
         grove.AddTowerCount();
+        Vector3 spawnPos = new Vector3(
+            transform.position.x,
+            -towerToCreate.transform.localScale.y,
+            transform.position.z);
+
         yield return new WaitForSeconds(1.5f);
-        audioSource.PlayOneShot(towerCreationAudio);
-        Instantiate(towerToCreate, towerPosition, Quaternion.identity);
+
+        if(audioSource && towerCreationAudio)
+        {
+            audioSource.PlayOneShot(towerCreationAudio);
+        }
+        
+        Instantiate(towerToCreate, spawnPos, Quaternion.identity);
+
+        Destroy(gameObject, 1.2f);
     }
 
     void UpdateTowerCost(int towerCount)
     {
-        towerCost += towerCount * 3;
-        towerCostText.text = "Buy Tower " + towerCost.ToString() + " Coins";
+        currentCost = baseTowerCost + (towerCount * 5);
+
+        if(towerCostText != null)
+        {
+            towerCostText.text = $"Buy Tower\n{currentCost} Coins";
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (grove != null)
+        {
+            grove.TowerCountChanged -= UpdateTowerCost;
+        }
     }
 
 }

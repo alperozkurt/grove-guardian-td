@@ -7,7 +7,7 @@ public class NatureBoostSkill : MonoBehaviour
     [Header("Skill Settings")]
     [SerializeField] private float boostAmount = 1.3f;
     [SerializeField] private float boostDuration = 5f;
-    [SerializeField] private float cooldownDuration = 10f;
+    [SerializeField] private float cooldownDuration = 20f;
     [SerializeField] private string inputActionName = "NatureBoost";
     [SerializeField] private GameObject boostParticlePrefab;
 

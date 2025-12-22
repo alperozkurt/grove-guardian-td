@@ -2,58 +2,80 @@ using UnityEngine;
 
 public class BulletAi : MonoBehaviour
 {
-
     [SerializeField] public float bulletDamage = 10f;
-    [SerializeField] private float bulletSpeed = 25;
+    [SerializeField] private float bulletSpeed = 25f;
+    [SerializeField] private float maxLifeTime = 5f; // Failsafe timer
+
     private Transform target;
     private TowerController owner;
+    private Vector3 lastKnownPosition;
 
-    public void Init(TowerController tower)
+    public void Init(TowerController tower, Transform newTarget)
     {
         owner = tower;
-        target = FindNearestEnemyToTower();
+        target = newTarget;
+        
+        if(target != null) lastKnownPosition = target.position; 
+        
+        // Failsafe: Destroy bullet after 5 seconds no matter what
+        // This prevents ghosts if physics glitched or bullet flew off map
+        Invoke(nameof(ForceDestroy), maxLifeTime);
     }
 
     void Update()
     {
-        if(!target.CompareTag("Enemy"))
+        // 1. Update target position if it's still alive
+        if (target != null)
         {
-            owner.OnBulletDestroyed();
-            Destroy(gameObject); 
+            lastKnownPosition = target.position;
         }
-        
-        transform.position = Vector3.MoveTowards(
-            transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
-    }
 
-    Transform FindNearestEnemyToTower()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // 2. Move
+        float step = bulletSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, lastKnownPosition, step);
 
-        if(enemies.Length == 0) return null;
-
-        Transform nearestEnemy = null;
-        float shortestDistance = Mathf.Infinity;
-
-        foreach(GameObject enemy in enemies)
+        // 3. CHECK FOR GHOSTING
+        // If target is dead (null) AND we have reached the last known position...
+        if (target == null && transform.position == lastKnownPosition)
         {
-            float distanceToEnemy = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
-
-            if(distanceToEnemy < shortestDistance)
-            {
-                nearestEnemy = enemy.transform;
-                shortestDistance = distanceToEnemy;
-            }
+            // ...we hit nothing (ghost bullet). Destroy it now.
+            RecycleBullet();
         }
-        return nearestEnemy;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Enemy")) return;
 
-        other.GetComponent<EnemyAi>()?.TakeDamage(bulletDamage);
-        owner.OnBulletDestroyed();
+        EnemyAi enemy = other.GetComponent<EnemyAi>();
+        
+        // Apply damage if enemy script exists
+        if (enemy != null)
+        {
+            enemy.TakeDamage(bulletDamage);
+        }
+        
+        // Always destroy on impact with enemy
+        RecycleBullet();
+    }
+
+    // Centralized function to clean up
+    void RecycleBullet()
+    {
+        CancelInvoke(nameof(ForceDestroy)); // Stop the failsafe timer
+        
+        // IMPORTANT: Tell the tower the bullet is gone, or it stops firing
+        if (owner != null) 
+        {
+            owner.OnBulletDestroyed();
+        }
+        
         Destroy(gameObject);
+    }
+
+    // Called by Invoke if bullet lives too long
+    void ForceDestroy()
+    {
+        RecycleBullet();
     }
 }

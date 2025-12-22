@@ -8,59 +8,80 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
     [SerializeField] private int coinOnDeath = 2;
+    
+    [Header("References")]
     [SerializeField] private EnemyHealthBar healthBar;
-
-    [Header("Audio")]
     [SerializeField] private AudioClip deathSound;
+
+    // State Variables
     float currentHealth;
-    Vector3 target;
-    GroveController grove;
-    private bool isDead = false;
-    Animator animator;
-    new Animation animation;
     private float defaultSpeed;
     private bool isSlowed;
+    private bool isDead = false;
+
+    // Cache
+    Transform targetDestination;
+    GroveController grove; 
+    Animator animator;
+    new Animation animation;
     private GameObject activeSlowEffect;
     private AudioSource audioSource;
+    Collider enemyCollider;
 
     void Start()
     {
         defaultSpeed = speed;
-        grove = FindFirstObjectByType<GroveController>();
-        gameObject.transform.LookAt(grove.transform);
-        target = new Vector3(grove.transform.position.x, gameObject.transform.position.y, grove.transform.position.z);
         currentHealth = maxHealth;
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        if(GetComponentInChildren<Animator>() != null)
+
+        enemyCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
+        grove = FindFirstObjectByType<GroveController>();
+
+        if (healthBar != null)
         {
-            animator = GetComponentInChildren<Animator>();
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
-        else
+        
+        if (grove != null)
+        {
+            targetDestination = grove.transform;
+            transform.LookAt(new Vector3(targetDestination.position.x, transform.position.y, targetDestination.position.z));
+        }
+
+        
+        animator = GetComponentInChildren<Animator>();
+        if(animator == null)
         {
             animation = GetComponent<Animation>();
         }
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(isDead) return;
+        if(isDead || targetDestination == null) return;
 
-        if(grove != null)
+        Vector3 destination = new Vector3(targetDestination.position.x, transform.position.y, targetDestination.position.z);
+        
         transform.position = Vector3.MoveTowards(
-            transform.position, target, speed * Time.deltaTime);
+            transform.position, 
+            destination, 
+            speed * Time.deltaTime
+        );
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Base")) return;
-        if(grove != null)
+        if (isDead) return;
+
+        if(other.gameObject.CompareTag("Base"))
+        {
+            if(grove != null)
         {
             grove.AddCoins(coinOnDeath);
             grove.DealDamageToBase(damageOnImpact);
         }
         Destroy(gameObject);
-        
+        }  
     }
     public void TakeDamage(float damage)
     {
@@ -68,11 +89,9 @@ public class EnemyAi : MonoBehaviour
 
         currentHealth -= damage;
 
-        currentHealth = Mathf.Max(currentHealth, 0);
-
         if(healthBar != null)
         {
-            healthBar.UpdateHealthBar(currentHealth,maxHealth);
+            healthBar.UpdateHealthBar(Mathf.Max(currentHealth, 0), maxHealth);
         }
 
         if(currentHealth <= 0)
@@ -85,7 +104,7 @@ public class EnemyAi : MonoBehaviour
     {
         if (isSlowed)
         {
-            StopCoroutine("SlowCoroutine");
+            StopCoroutine(nameof(SlowCoroutine));
             if(activeSlowEffect != null) Destroy(activeSlowEffect);
         }
         StartCoroutine(SlowCoroutine(slowPercantage,duration, effectPrefab));
@@ -103,9 +122,10 @@ public class EnemyAi : MonoBehaviour
             activeSlowEffect.transform.SetParent(this.transform);
         }
         yield return new WaitForSeconds(duration);
-        if(activeSlowEffect != null) Destroy(activeSlowEffect);
+
         speed = defaultSpeed;
         isSlowed = false;
+        if(activeSlowEffect != null) Destroy(activeSlowEffect);
     }
 
     private void Die()
@@ -114,28 +134,23 @@ public class EnemyAi : MonoBehaviour
 
         isDead = true;
 
-        GetComponentInChildren<Canvas>().enabled = false;
-        GetComponent<Collider>().enabled = false;
         gameObject.tag = "Untagged";
+        if(enemyCollider != null) enemyCollider.enabled = false;
+
+        GetComponentInChildren<Canvas>().enabled = false;
+        
         if(activeSlowEffect != null) Destroy(activeSlowEffect);
+
         if(audioSource != null && deathSound != null)
         {
             audioSource.PlayOneShot(deathSound);
         }
-        try
-        {
-            animator.SetTrigger("Die");
-        }
-        catch
-        {
-            Debug.Log("GameObejct does not have a death aniamtion");
-        }
 
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetTrigger("Die");
-        }
-        else
+        } 
+        else if (animation != null)
         {
             animation.CrossFade("Anim_Death");
         }
