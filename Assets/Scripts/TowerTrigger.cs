@@ -6,11 +6,10 @@ public class TowerTrigger : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private GameObject towerToCreate;
-    [SerializeField] private int baseTowerCost = 20;
     [SerializeField] private AudioClip towerCreationAudio;
+    [SerializeField] private int baseTowerCost = 15;
     private int currentCost;
     private AudioSource audioSource;
-    //private Vector3 towerPosition;
     private bool isUsed = false;
     private TextMeshProUGUI towerCostText;
     GroveController grove;
@@ -65,7 +64,7 @@ public class TowerTrigger : MonoBehaviour
 
     void UpdateTowerCost(int towerCount)
     {
-        currentCost = baseTowerCost + (towerCount * 5);
+        currentCost = baseTowerCost + (towerCount * 6);
 
         if(towerCostText != null)
         {

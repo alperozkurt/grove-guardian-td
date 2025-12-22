@@ -96,7 +96,6 @@ public class NatureBoostSkill : MonoBehaviour
 
     private void ActivateSkill(GameObject[] towers)
     {
-        Debug.Log("Nature boost Activated!");
         GetComponent<PlayerController>().PerformNatureBoost();
         foreach (GameObject tower in towers)
         {

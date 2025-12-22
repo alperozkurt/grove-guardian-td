@@ -121,13 +121,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
     }
 
-    public void PerformBlizzard()
-    {
-        animator.SetTrigger("Blizzard");
-    }
-
-    public void PerformNatureBoost()
-    {
-        animator.SetTrigger("NatureBoost");
-    }
+    public void PerformBlizzard() => animator.SetTrigger("Blizzard");
+    public void PerformNatureBoost() => animator.SetTrigger("NatureBoost");
 }

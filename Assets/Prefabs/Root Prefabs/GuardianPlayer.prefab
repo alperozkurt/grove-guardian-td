@@ -265,10 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d3c7ea3cc73753cbe3cc1b589061e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 15
-  cooldownDuration: 18
+  damageAmount: 12
+  cooldownDuration: 16
   inputActionName: Blizzard
-  slowPercantage: 0.5
+  slowPercantage: 0.6
   slowDuration: 5
   freezeParticlePrefab: {fileID: 3106182021380325047, guid: 86e5a37f792cf848a92bb9090453899b, type: 3}
   blizzardSound: {fileID: 8300000, guid: dc0c096ae917ef8a1a38bec9a2c433f3, type: 3}
@@ -285,9 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101cbeb76ef115d4b8460b6d8ca7a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 1.3
-  boostDuration: 5
-  cooldownDuration: 24
+  boostAmount: 1.4
+  boostDuration: 6
+  cooldownDuration: 25
   inputActionName: NatureBoost
   boostParticlePrefab: {fileID: 2079218250412454697, guid: 8a78cd70669bd637c9a93aa34b09a04a, type: 3}
   boostSound: {fileID: 8300000, guid: ba64dc432bbc79f1e8089d9cdf09e426, type: 3}

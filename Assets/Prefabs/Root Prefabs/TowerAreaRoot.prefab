@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerToCreate: {fileID: 7872443174113817124, guid: da779b59e56d57e219146c4cee5537cc, type: 3}
-  baseTowerCost: 20
   towerCreationAudio: {fileID: 8300000, guid: 89e4d46ad3798ca1bb5dc749509e8249, type: 3}
+  baseTowerCost: 15
 --- !u!65 &4459174937567046872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -257,10 +257,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302478102750763680, guid: 19e1a0712f04f8bd496bbd9f70864019, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302478102750763680, guid: 19e1a0712f04f8bd496bbd9f70864019, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677067239386010890, guid: 19e1a0712f04f8bd496bbd9f70864019, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6021205350730907732, guid: 19e1a0712f04f8bd496bbd9f70864019, type: 3}
       propertyPath: m_Name
       value: TowerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8101128810718578328, guid: 19e1a0712f04f8bd496bbd9f70864019, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 07d30ae5a0700e745a4ab28d8dc4be17, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

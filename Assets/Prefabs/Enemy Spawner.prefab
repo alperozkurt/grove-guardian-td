@@ -62,37 +62,56 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
       spawnCount: 8
       spawnRate: 0.5
-      delayAfterGroup: 4
+      delayAfterGroup: 3
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
       spawnCount: 8
       spawnRate: 0.5
-      delayAfterGroup: 4
+      delayAfterGroup: 3
     timeToNextWave: 15
   - waveName: Medium wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
       spawnCount: 5
       spawnRate: 0.7
-      delayAfterGroup: 4
+      delayAfterGroup: 3
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
       spawnCount: 5
       spawnRate: 0.7
-      delayAfterGroup: 4
+      delayAfterGroup: 3
     timeToNextWave: 20
   - waveName: Hard wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 5
+      spawnCount: 7
       spawnRate: 0.7
-      delayAfterGroup: 4
-    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
-      spawnCount: 15
-      spawnRate: 1
-      delayAfterGroup: 10
+      delayAfterGroup: 3
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 5
+      spawnCount: 7
       spawnRate: 0.7
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 7
+      spawnRate: 0.7
+      delayAfterGroup: 3
+    timeToNextWave: 25
+  - waveName: Last Wave
+    waveGroups:
+    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
+      spawnCount: 10
+      spawnRate: 0.2
+      delayAfterGroup: 2
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 7
+      spawnRate: 0.4
       delayAfterGroup: 4
+    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
+      spawnCount: 10
+      spawnRate: 0.2
+      delayAfterGroup: 2
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 7
+      spawnRate: 0.4
+      delayAfterGroup: 2
     timeToNextWave: 60
 --- !u!65 &8981438512725925463
 BoxCollider:

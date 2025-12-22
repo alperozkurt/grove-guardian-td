@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
-  maxHealth: 25
+  maxHealth: 20
   damageOnImpact: 10
   coinOnDeath: 1
   healthBar: {fileID: 1565161496169689959}
