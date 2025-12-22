@@ -102,6 +102,7 @@ public class BlizzardSkill : MonoBehaviour
     private void ActivateSkill(GameObject[] enemies)
     {
         Debug.Log("Blizzard Activated!");
+        GetComponent<PlayerController>().PerformBlizzard();
         foreach (GameObject enemy in enemies)
         {
             EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();

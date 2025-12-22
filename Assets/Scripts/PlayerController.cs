@@ -3,39 +3,49 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float walkSpeed = 10f;
+    [SerializeField] private float sprintSpeed = 18f;
     [SerializeField] private float rotationSpeed = 10f;
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
 
     // Internal Variables
-    private Rigidbody rigidBody; // Renamed from 'controller' for clarity
+    private Rigidbody rigidBody;
     private PlayerInput playerInput;
+    private Animator animator;
+    
     private InputAction moveAction;
+    private InputAction sprintAction;
+    private InputAction blizzardAction;
+    private InputAction natureBoostAction;
+    
     private Vector2 inputVector;
+    private bool isSprinting;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+        animator = GetComponent<Animator>();
 
-        // Auto-find main camera
         if (cameraTransform == null && Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
         }
 
         // Setup Input
+        // NOTE: Ensure you define an Action named "Sprint" in your Input Action Asset!
         moveAction = playerInput.actions["Move"];
+        sprintAction = playerInput.actions["Sprint"];
 
-        // CONFIGURATION: Ensure Rigidbody settings are correct for a character
-        rigidBody.freezeRotation = true; // Prevents character from falling over
-        rigidBody.useGravity = true;     // Let Unity handle gravity
-        rigidBody.interpolation = RigidbodyInterpolation.Interpolate; // Smoothes movement
+        rigidBody.freezeRotation = true;
+        rigidBody.useGravity = true;
+        rigidBody.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     private void Start()
@@ -46,13 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Inputs are read every frame (Update) to prevent missing clicks/taps
         ReadInput();
+        UpdateAnimations(); // New: Update animations every frame
     }
 
     private void FixedUpdate()
     {
-        // Physics are applied in FixedUpdate
         MovePlayer();
     }
 
@@ -62,6 +71,12 @@ public class PlayerController : MonoBehaviour
         {
             inputVector = moveAction.ReadValue<Vector2>();
         }
+
+        if (sprintAction != null)
+        {
+            // Read if the button is currently being held down
+            isSprinting = sprintAction.IsPressed();
+        }
     }
 
     private void MovePlayer()
@@ -70,7 +85,6 @@ public class PlayerController : MonoBehaviour
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
 
-        // Flatten direction to prevent flying up/down when looking up/down
         camForward.y = 0;
         camRight.y = 0;
         camForward.Normalize();
@@ -78,20 +92,42 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirection = (camForward * inputVector.y + camRight * inputVector.x).normalized;
 
-        // 2. Apply Velocity (Movement)
-        // We preserve the current Y velocity so gravity continues to work
-        Vector3 targetVelocity = moveDirection * moveSpeed;
-        targetVelocity.y = rigidBody.linearVelocity.y; 
+        // 2. Determine Speed (Walk vs Sprint)
+        // Only sprint if moving forward/sideways and holding shift
+        float targetSpeed = (isSprinting && inputVector != Vector2.zero) ? sprintSpeed : walkSpeed;
+
+        // 3. Apply Velocity
+        Vector3 targetVelocity = moveDirection * targetSpeed;
+        targetVelocity.y = rigidBody.linearVelocity.y; // Keep existing gravity
 
         rigidBody.linearVelocity = targetVelocity;
 
-        // 3. Apply Rotation
+        // 4. Apply Rotation
         if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            // using MoveRotation is smoother for Physics objects than transform.rotation
             Quaternion nextRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
             rigidBody.MoveRotation(nextRotation);
         }
+    }
+
+    private void UpdateAnimations()
+    {
+        Vector3 horizontalVelocity = rigidBody.linearVelocity;
+        horizontalVelocity.y = 0;
+        
+        float speed = horizontalVelocity.magnitude;
+
+        animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
+    }
+
+    public void PerformBlizzard()
+    {
+        animator.SetTrigger("Blizzard");
+    }
+
+    public void PerformNatureBoost()
+    {
+        animator.SetTrigger("NatureBoost");
     }
 }
