@@ -3255,7 +3255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583653484803055507, guid: d3e39385590ce769d9c9fc947350d5eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 450
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 7583653484803055507, guid: d3e39385590ce769d9c9fc947350d5eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3420,6 +3420,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175271060209146799, guid: 0d8bc5fba5f330fe88b320949fede2bc, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2276456491854965280, guid: 0d8bc5fba5f330fe88b320949fede2bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 150
@@ -3464,6 +3468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8981438512725925463, guid: 0d8bc5fba5f330fe88b320949fede2bc, type: 3}
+      propertyPath: m_Size.z
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3483,7 +3491,7 @@ PrefabInstance:
       objectReference: {fileID: 1441494273}
     - target: {fileID: 7151789788690493415, guid: 8928db28e63c140b9b6e90da0c6d6c47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 450
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 7151789788690493415, guid: 8928db28e63c140b9b6e90da0c6d6c47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3553,7 +3561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6175879053861245966, guid: 6c4c2f428734752f28b6ec181e17f4df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 450
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 6175879053861245966, guid: 6c4c2f428734752f28b6ec181e17f4df, type: 3}
       propertyPath: m_LocalPosition.y
