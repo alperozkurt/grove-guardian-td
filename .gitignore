@@ -9,6 +9,7 @@ Builds/
 UserSettings/
 MemoryCaptures/
 Logs/
+Misc/
 
 ########################################
 # Asset Store & Plugins
@@ -18,14 +19,11 @@ Assets/Plugins/PlasticSCM*
 Assets/AddressableAssetsData/*/*.bin*
 Assets/StreamingAssets/aa.meta
 Assets/AssetStore/
+Assets/Imported Assets
 assets/assetstoretools/
 assets/plugins/PlasticSCM*
 assets/addressableassetsdata/*/*.bin*
 assets/streamingassets/*/aa/*
-Assets/Imported Assets/*
-Assets/AlienAnimal/
-Assets/unitypackage/
-Assets/amusedART/
 
 ########################################
 # System Files
