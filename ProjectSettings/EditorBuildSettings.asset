@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 9ebf7a6c3122cbf7d8eb6d0c5301c573
+  - enabled: 1
+    path: Assets/Scenes/NatureScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 85dbd1ba0d1e26b07920c4f6457f7cb6, type: 3}
   m_UseUCBPForAssetBundles: 0

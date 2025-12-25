@@ -6,17 +6,21 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private AudioClip waveStartAudio;
     private AudioSource audioSource;
+    private BoxCollider spawnArea;
     public List<Wave> waves;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        spawnArea = GetComponent<BoxCollider>();
+        spawnArea.isTrigger = true;
         
         StartCoroutine(SummonAllWaves());
     }
     IEnumerator SummonAllWaves()
     {
         // Initial wait
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(15f);
         if(audioSource != null)
         {
             audioSource.PlayOneShot(waveStartAudio);
@@ -46,7 +50,18 @@ public class Spawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemyPrefab)
     {
-        Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+        Vector3 spawnPos = GetRandomPosition();
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+    }
+
+    Vector3 GetRandomPosition()
+    {
+        Bounds bounds = spawnArea.bounds;
+        float x = transform.position.x;
+        float y = transform.position.y;
+        float z = Random.Range(bounds.min.z, bounds.max.z);
+
+        return new Vector3(x, y, z);
     }
 }
 

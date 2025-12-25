@@ -297,7 +297,7 @@ MonoBehaviour:
   damageOnImpact: 10
   coinOnDeath: 1
   healthBar: {fileID: 1565161496169689959}
-  deathSound: {fileID: 8300000, guid: dc4d4dfabf293ec23bc548960ca78023, type: 3}
+  deathSound: {fileID: 8300000, guid: 233a324e2402961ae9c3ae50e12b9480, type: 3}
 --- !u!135 &3353119570275825201
 SphereCollider:
   m_ObjectHideFlags: 0
