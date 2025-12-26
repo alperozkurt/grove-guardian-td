@@ -68,7 +68,7 @@ MonoBehaviour:
       spawnCount: 8
       spawnRate: 0.5
       delayAfterGroup: 3
-    timeToNextWave: 15
+    timeToNextWave: 30
   - waveName: Medium wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
@@ -79,7 +79,7 @@ MonoBehaviour:
       spawnCount: 5
       spawnRate: 0.7
       delayAfterGroup: 3
-    timeToNextWave: 20
+    timeToNextWave: 30
   - waveName: Hard wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
@@ -94,7 +94,7 @@ MonoBehaviour:
       spawnCount: 7
       spawnRate: 0.7
       delayAfterGroup: 3
-    timeToNextWave: 25
+    timeToNextWave: 30
   - waveName: Last Wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}

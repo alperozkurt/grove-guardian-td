@@ -77,7 +77,6 @@ public class EnemyAi : MonoBehaviour
         {
             if(grove != null)
         {
-            grove.AddCoins(coinOnDeath);
             grove.DealDamageToBase(damageOnImpact);
         }
         Destroy(gameObject);
@@ -133,6 +132,8 @@ public class EnemyAi : MonoBehaviour
         if(isDead) return;
 
         isDead = true;
+
+        FindFirstObjectByType<EnemyCounter>().OnEnemyDeath();
 
         gameObject.tag = "Untagged";
         if(enemyCollider != null) enemyCollider.enabled = false;

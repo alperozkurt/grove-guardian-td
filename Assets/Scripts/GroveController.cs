@@ -28,7 +28,7 @@ public class GroveController : MonoBehaviour
     }
 
     public void DealDamageToBase(float damage)
-{
+    {
     currentHealth -= damage;
     currentHealth = Mathf.Max(currentHealth, 0);
 
@@ -37,7 +37,7 @@ public class GroveController : MonoBehaviour
 
     if (currentHealth <= 0)
         Debug.Log("Game Over!");
-}
+    }
 
     public void AddCoins(int amount)
     {

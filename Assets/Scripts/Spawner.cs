@@ -7,6 +7,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private AudioClip waveStartAudio;
     private AudioSource audioSource;
     private BoxCollider spawnArea;
+    private EnemyCounter enemyCounter;
+    private SpawnTimer spawnTimer;
     public List<Wave> waves;
     void Start()
     {
@@ -14,22 +16,28 @@ public class Spawner : MonoBehaviour
 
         spawnArea = GetComponent<BoxCollider>();
         spawnArea.isTrigger = true;
+
+        enemyCounter = FindFirstObjectByType<EnemyCounter>();
+
+        spawnTimer = FindFirstObjectByType<SpawnTimer>();
         
         StartCoroutine(SummonAllWaves());
     }
     IEnumerator SummonAllWaves()
     {
         // Initial wait
-        yield return new WaitForSeconds(15f);
-        if(audioSource != null)
-        {
-            audioSource.PlayOneShot(waveStartAudio);
-        }
+        yield return StartCoroutine(WaitForWaveTimer(15f)); // initial wait
+        
         foreach(Wave currentWave in waves)
         {
+            if(audioSource != null)
+            {
+                audioSource.PlayOneShot(waveStartAudio);
+            }
             Debug.Log("Starting: " + currentWave.waveName);
             foreach(WaveGroup group in currentWave.waveGroups)
             {
+                
                 for(int i = 0; i < group.spawnCount; i++)
                 {
                     SpawnEnemy(group.enemyPrefab);
@@ -43,15 +51,37 @@ public class Spawner : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(currentWave.timeToNextWave);
+            yield return StartCoroutine(WaitForWaveTimer(currentWave.timeToNextWave));
         }
-        Debug.Log("Level Complete!");
+    }
+
+    IEnumerator WaitForWaveTimer(float duration)
+    {
+        float timer = duration;
+
+        while(timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+            if(spawnTimer != null)
+            {
+                spawnTimer.UpdateTime(timer);
+            }
+
+            yield return null;
+        }
+
+        if(spawnTimer != null)
+        {
+            spawnTimer.UpdateTime(0);
+        }
     }
 
     void SpawnEnemy(GameObject enemyPrefab)
     {
         Vector3 spawnPos = GetRandomPosition();
         Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        enemyCounter.OnEnemySpawn();
     }
 
     Vector3 GetRandomPosition()
