@@ -79,6 +79,8 @@ public class EnemyAi : MonoBehaviour
         {
             grove.DealDamageToBase(damageOnImpact);
         }
+        EnemyCounter counter = FindFirstObjectByType<EnemyCounter>();
+        counter.OnEnemyDeath();
         Destroy(gameObject);
         }  
     }

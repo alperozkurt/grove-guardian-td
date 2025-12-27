@@ -131,6 +131,7 @@ public class Spawner : MonoBehaviour
         Instantiate(boss, spawnPos, Quaternion.identity);
         enemyCounter.OnEnemySpawn();
         spawnTimer.UpdateTime(0, true);
+        enemyCounter.SetAllWavesSpawned();
     }
 
     Vector3 GetBossPosition()

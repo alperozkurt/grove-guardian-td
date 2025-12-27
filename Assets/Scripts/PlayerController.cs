@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // Setup Input
-        // NOTE: Ensure you define an Action named "Sprint" in your Input Action Asset!
         moveAction = playerInput.actions["Move"];
         sprintAction = playerInput.actions["Sprint"];
 
