@@ -78,7 +78,6 @@ public class BlizzardSkill : MonoBehaviour
         
         if (enemies.Length == 0)
         {
-            Debug.Log("No enemies found.");
             return; 
         }
 
@@ -105,10 +104,16 @@ public class BlizzardSkill : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
+            BossAi bossAi = enemy.GetComponent<BossAi>();
             if (enemyAi != null)
             {
                 enemyAi.TakeDamage(damageAmount);
                 enemyAi.ApplySlow(slowPercantage, slowDuration, freezeParticlePrefab);
+            }
+            else
+            {
+                bossAi.TakeDamage(damageAmount);
+                bossAi.ApplySlow(slowPercantage, slowDuration, freezeParticlePrefab);
             }
         }
     }

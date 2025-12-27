@@ -81,7 +81,7 @@ CapsuleCollider:
   m_Radius: 0.8
   m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &5906515614011856558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef607525e91089c48a5fdf26fdd2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.5
-  maxHealth: 600
+  speed: 3
+  maxHealth: 500
   damageOnImpact: 100
   healthBar: {fileID: 6664484806223104070}
 --- !u!1001 &670904430295362645
@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8250299647081410968, guid: ac01ac5e4fa92ff469ecfbae686c922e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8250299647081410968, guid: ac01ac5e4fa92ff469ecfbae686c922e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e7ddf7281e46bbb5842f4707564dedd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e7ddf7281e46bbb5842f4707564dedd, type: 3}
       propertyPath: m_LocalPosition.z

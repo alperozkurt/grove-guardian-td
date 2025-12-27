@@ -127,19 +127,11 @@ public class Spawner : MonoBehaviour
 
     void SpawnBoss(GameObject boss)
     {
-        Vector3 spawnPos = GetBossPosition();
+        Vector3 spawnPos = transform.position;
         Instantiate(boss, spawnPos, Quaternion.identity);
         enemyCounter.OnEnemySpawn();
         spawnTimer.UpdateTime(0, true);
         enemyCounter.SetAllWavesSpawned();
-    }
-
-    Vector3 GetBossPosition()
-    {
-        float x = transform.position.x;
-        float y = 1.5f;
-        float z = transform.position.z;
-        return new Vector3(x, y, z);
     }
 }
 

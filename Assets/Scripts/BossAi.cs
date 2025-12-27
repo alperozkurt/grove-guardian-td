@@ -140,6 +140,6 @@ public class BossAi : MonoBehaviour
 
         if (animator != null) animator.SetTrigger("Die");
 
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 3.5f);
     }
 }
