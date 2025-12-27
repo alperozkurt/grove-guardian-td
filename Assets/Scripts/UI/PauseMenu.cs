@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameObject[] otherUI;
     private InputAction pauseAction;
     private string inputActionName = "Pause";
     private bool isPaused = false;
@@ -27,6 +28,10 @@ public class PauseMenu : MonoBehaviour
 
     private void OnPausePerformed(InputAction.CallbackContext context)
     {
+        foreach(GameObject UI in otherUI)
+        {
+            if(UI.activeInHierarchy) return;
+        }
         if (isPaused)
         {
             Resume();

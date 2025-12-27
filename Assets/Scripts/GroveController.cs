@@ -36,7 +36,7 @@ public class GroveController : MonoBehaviour
         healthUI.UpdateHealthUI(currentHealth);
 
     if (currentHealth <= 0)
-        FindFirstObjectByType<GameOverMenu>().SetGameOver();
+        FindFirstObjectByType<GameOverPanel>().SetGameOver();
     }
 
     public void AddCoins(int amount)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameOverMenu : MonoBehaviour
+public class GameOverPanel : MonoBehaviour
 {
 [SerializeField] private GameObject gameOverMenu;
 

@@ -610,6 +610,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1684770611}
   playerInput: {fileID: 2023352751}
+  otherUI:
+  - {fileID: 93188404}
+  - {fileID: 2131368192}
 --- !u!4 &165001402
 Transform:
   m_ObjectHideFlags: 0
@@ -3867,7 +3870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165001403}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverMenu, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
