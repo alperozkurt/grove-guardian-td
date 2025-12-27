@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCountText: {fileID: 73007416}
   victoryPanel: {fileID: 2131368192}
+  isBossDead: 0
 --- !u!4 &86165808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8611037023498484786, guid: ef46dddc5a4733fd0bbb83a4db000d05, type: 3}
@@ -4554,7 +4555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583653484803055507, guid: d3e39385590ce769d9c9fc947350d5eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 383.57
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 7583653484803055507, guid: d3e39385590ce769d9c9fc947350d5eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4786,7 +4787,7 @@ PrefabInstance:
       objectReference: {fileID: 1441494273}
     - target: {fileID: 7151789788690493415, guid: 8928db28e63c140b9b6e90da0c6d6c47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 383.57
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 7151789788690493415, guid: 8928db28e63c140b9b6e90da0c6d6c47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4856,7 +4857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6175879053861245966, guid: 6c4c2f428734752f28b6ec181e17f4df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 383.57
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6175879053861245966, guid: 6c4c2f428734752f28b6ec181e17f4df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4975,11 +4976,11 @@ SceneRoots:
   - {fileID: 974165438211465820}
   - {fileID: 1975518856347610184}
   - {fileID: 705507995}
+  - {fileID: 803513118}
   - {fileID: 1066991002540158326}
   - {fileID: 8085960941978054449}
   - {fileID: 6864544060460406369}
   - {fileID: 1779609677504529022}
-  - {fileID: 803513118}
   - {fileID: 1607454592}
   - {fileID: 165001402}
   - {fileID: 511948951}

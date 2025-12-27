@@ -1,16 +1,15 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
-public class EnemyAi : MonoBehaviour
+public class BossAi : MonoBehaviour 
 {
     [Header("Enemy Stats")]
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 2f;
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageOnImpact;
-    [SerializeField] private int coinOnDeath = 2;
-    
+
+    [Header("References")]
     [SerializeField] private EnemyHealthBar healthBar;
-    [SerializeField] private AudioClip deathSound;
 
     // State Variables
     float currentHealth;
@@ -22,10 +21,9 @@ public class EnemyAi : MonoBehaviour
     Transform targetDestination;
     GroveController grove; 
     Animator animator;
-    new Animation animation;
     private GameObject activeSlowEffect;
-    private AudioSource audioSource;
     Collider enemyCollider;
+
 
     void Start()
     {
@@ -33,7 +31,6 @@ public class EnemyAi : MonoBehaviour
         currentHealth = maxHealth;
 
         enemyCollider = GetComponent<Collider>();
-        audioSource = GetComponent<AudioSource>();
         grove = FindFirstObjectByType<GroveController>();
 
         if (healthBar != null)
@@ -46,13 +43,8 @@ public class EnemyAi : MonoBehaviour
             targetDestination = grove.transform;
             transform.LookAt(new Vector3(targetDestination.position.x, transform.position.y, targetDestination.position.z));
         }
-
         
         animator = GetComponentInChildren<Animator>();
-        if(animator == null)
-        {
-            animation = GetComponent<Animation>();
-        }
     }
 
     void Update()
@@ -83,6 +75,7 @@ public class EnemyAi : MonoBehaviour
         Destroy(gameObject);
         }  
     }
+
     public void TakeDamage(float damage)
     {
         if(isDead) return;
@@ -99,7 +92,6 @@ public class EnemyAi : MonoBehaviour
             Die();
         }
     }
-
     public void ApplySlow(float slowPercantage, float duration, GameObject effectPrefab)
     {
         if (isSlowed)
@@ -134,7 +126,10 @@ public class EnemyAi : MonoBehaviour
 
         isDead = true;
 
-        FindFirstObjectByType<EnemyCounter>().OnEnemyDeath();
+        EnemyCounter counter = FindFirstObjectByType<EnemyCounter>();
+
+        counter.isBossDead = true;
+        counter.OnEnemyDeath();
 
         gameObject.tag = "Untagged";
         if(enemyCollider != null) enemyCollider.enabled = false;
@@ -143,25 +138,8 @@ public class EnemyAi : MonoBehaviour
         
         if(activeSlowEffect != null) Destroy(activeSlowEffect);
 
-        if(audioSource != null && deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
+        if (animator != null) animator.SetTrigger("Die");
 
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        } 
-        else if (animation != null)
-        {
-            animation.CrossFade("Anim_Death");
-        }
-       
-        if(grove != null)
-        {
-            grove.AddCoins(coinOnDeath);
-        }
-
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 4f);
     }
 }

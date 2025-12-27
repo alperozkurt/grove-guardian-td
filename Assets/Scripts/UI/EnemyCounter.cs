@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ public class EnemyCounter : MonoBehaviour
     [SerializeField] private GameObject victoryPanel;
     private int enemyCount;
     private bool allWavesSpawned = false;
+    public bool isBossDead = false;
     public event Action<int> EnemyCountChanged;
     void Start()
     {
@@ -40,11 +43,17 @@ public class EnemyCounter : MonoBehaviour
 
     private void CheckVictoryCondition()
     {
-        if(allWavesSpawned && enemyCount < 0)
+        if(allWavesSpawned && enemyCount <= 0 && isBossDead)
         {
-            victoryPanel.SetActive(true);
-            Time.timeScale = 0f;
+            StartCoroutine(nameof(StartVictoryAnimations));
         }
+    }
+
+    IEnumerator StartVictoryAnimations()
+    {
+        yield return new WaitForSeconds(4f);
+        victoryPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void UpdateEnemyCountUI(int enemyCount)

@@ -48,11 +48,16 @@ public class BulletAi : MonoBehaviour
         if (!other.gameObject.CompareTag("Enemy")) return;
 
         EnemyAi enemy = other.GetComponent<EnemyAi>();
+        BossAi boss = other.GetComponent<BossAi>();
         
         // Apply damage if enemy script exists
         if (enemy != null)
         {
             enemy.TakeDamage(bulletDamage);
+        }
+        else
+        {
+            boss.TakeDamage(bulletDamage);
         }
         
         // Always destroy on impact with enemy
