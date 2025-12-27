@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     
     private InputAction moveAction;
     private InputAction sprintAction;
-    private InputAction blizzardAction;
-    private InputAction natureBoostAction;
     
     private Vector2 inputVector;
     private bool isSprinting;

@@ -57,6 +57,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662a5cab4d0d5f4b282953f876192c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipWaveAction:
+    m_Name: Skip Wave
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7f6d4e1a-d639-44ea-be03-18c095f13a69
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c4e55e22-9cdf-4eba-bd78-222da51941be
+      m_Path: <Keyboard>/c
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip Wave
+      m_Flags: 0
+    m_Flags: 0
+  skipButton: {fileID: 0}
   waveStartAudio: {fileID: 8300000, guid: 0fbc285f61b38879d83d9b041a06629c, type: 3}
   waves:
   - waveName: Easy wave
@@ -69,7 +87,7 @@ MonoBehaviour:
       spawnCount: 8
       spawnRate: 0.5
       delayAfterGroup: 3
-    timeToNextWave: 30
+    timeToNextWave: 20
   - waveName: Medium wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
@@ -95,25 +113,13 @@ MonoBehaviour:
       spawnCount: 7
       spawnRate: 0.7
       delayAfterGroup: 3
-    timeToNextWave: 30
-  - waveName: Last Wave
+    timeToNextWave: 40
+  - waveName: Boss Wave
     waveGroups:
-    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 10
-      spawnRate: 0.2
-      delayAfterGroup: 2
-    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
-      spawnCount: 7
-      spawnRate: 0.4
-      delayAfterGroup: 4
-    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 10
-      spawnRate: 0.2
-      delayAfterGroup: 2
-    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
-      spawnCount: 7
-      spawnRate: 0.4
-      delayAfterGroup: 2
+    - enemyPrefab: {fileID: 7789613009187174733, guid: bf657b3228f047478a009bc29aed4c96, type: 3}
+      spawnCount: 1
+      spawnRate: 1
+      delayAfterGroup: 1
     timeToNextWave: 60
 --- !u!65 &8981438512725925463
 BoxCollider:

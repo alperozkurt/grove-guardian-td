@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private InputAction skipWaveAction;
+    [SerializeField] private Button skipButton;
     [SerializeField] private AudioClip waveStartAudio;
     private AudioSource audioSource;
     private BoxCollider spawnArea;
     private EnemyCounter enemyCounter;
     private SpawnTimer spawnTimer;
     public List<Wave> waves;
+    private void OnEnable() => skipWaveAction.Enable();
+    private void OnDisable() => skipWaveAction.Disable();
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -20,47 +27,68 @@ public class Spawner : MonoBehaviour
         enemyCounter = FindFirstObjectByType<EnemyCounter>();
 
         spawnTimer = FindFirstObjectByType<SpawnTimer>();
+
+        if(skipButton != null) skipButton.interactable = false;
         
         StartCoroutine(SummonAllWaves());
     }
+
     IEnumerator SummonAllWaves()
     {
         // Initial wait
         yield return StartCoroutine(WaitForWaveTimer(15f)); // initial wait
         
-        foreach(Wave currentWave in waves)
+        for(int i = 0; i < waves.Count; i ++)
         {
-            if(audioSource != null)
+            Wave currentWave = waves[i];
+
+            if(skipButton != null) skipButton.interactable = false;
+
+            if(audioSource != null) audioSource.PlayOneShot(waveStartAudio);
+
+            if(i == waves.Count - 1)
             {
-                audioSource.PlayOneShot(waveStartAudio);
+                // Boss wave
+                GameObject bossPrefab = currentWave.waveGroups[0].enemyPrefab;
+                SpawnBoss(bossPrefab);
             }
-            Debug.Log("Starting: " + currentWave.waveName);
-            foreach(WaveGroup group in currentWave.waveGroups)
+            else
             {
-                
-                for(int i = 0; i < group.spawnCount; i++)
+                // Normal wave spawn
+                foreach(WaveGroup group in currentWave.waveGroups)
                 {
-                    SpawnEnemy(group.enemyPrefab);
-
-                    yield return new WaitForSeconds(group.spawnRate);
+                    
+                    for(int j = 0; j < group.spawnCount; j++)
+                    {
+                        SpawnEnemy(group.enemyPrefab);
+    
+                        yield return new WaitForSeconds(group.spawnRate);
+                    }
+    
+                    if(group.delayAfterGroup > 0)
+                    {
+                        yield return new WaitForSeconds(group.delayAfterGroup);
+                    }
                 }
-
-                if(group.delayAfterGroup > 0)
-                {
-                    yield return new WaitForSeconds(group.delayAfterGroup);
-                }
+                yield return StartCoroutine(WaitForWaveTimer(currentWave.timeToNextWave));
             }
-
-            yield return StartCoroutine(WaitForWaveTimer(currentWave.timeToNextWave));
         }
     }
 
     IEnumerator WaitForWaveTimer(float duration)
     {
+        if(skipButton != null) skipButton.interactable = true;
+
         float timer = duration;
 
         while(timer > 0)
         {
+            // If pressed skip wave wait
+            if (skipWaveAction.WasPressedThisFrame())
+            {
+                timer = 0;
+            }
+
             timer -= Time.deltaTime;
 
             if(spawnTimer != null)
@@ -75,6 +103,9 @@ public class Spawner : MonoBehaviour
         {
             spawnTimer.UpdateTime(0);
         }
+
+        // Disable skipButton when timer is over
+        skipButton.interactable = false;
     }
 
     void SpawnEnemy(GameObject enemyPrefab)
@@ -91,6 +122,22 @@ public class Spawner : MonoBehaviour
         float y = transform.position.y;
         float z = Random.Range(bounds.min.z, bounds.max.z);
 
+        return new Vector3(x, y, z);
+    }
+
+    void SpawnBoss(GameObject boss)
+    {
+        Vector3 spawnPos = GetBossPosition();
+        Instantiate(boss, spawnPos, Quaternion.identity);
+        enemyCounter.OnEnemySpawn();
+        spawnTimer.UpdateTime(0, true);
+    }
+
+    Vector3 GetBossPosition()
+    {
+        float x = transform.position.x;
+        float y = 1.5f;
+        float z = transform.position.z;
         return new Vector3(x, y, z);
     }
 }
