@@ -7,7 +7,6 @@ using UnityEngine;
 public class EnemyCounter : MonoBehaviour
 {   
     [SerializeField] private TextMeshProUGUI enemyCountText;
-    [SerializeField] private GameObject victoryPanel;
     private int enemyCount;
     private bool allWavesSpawned = false;
     public bool isBossDead = false;
@@ -15,7 +14,6 @@ public class EnemyCounter : MonoBehaviour
     void Start()
     {
         enemyCount = 0; // initial enemy enemyCount
-        if(victoryPanel != null) victoryPanel.SetActive(false); // ensure hidden
 
         EnemyCountChanged?.Invoke(enemyCount);
         EnemyCountChanged += UpdateEnemyCountUI;
@@ -51,9 +49,9 @@ public class EnemyCounter : MonoBehaviour
 
     IEnumerator StartVictoryAnimations()
     {
-        yield return new WaitForSeconds(4f);
-        victoryPanel.SetActive(true);
-        Time.timeScale = 0f;
+        yield return new WaitForSeconds(3.5f);
+        VictoryPanel victoryPanel = FindFirstObjectByType<VictoryPanel>();
+        victoryPanel.SetVictory();
     }
 
     private void UpdateEnemyCountUI(int enemyCount)

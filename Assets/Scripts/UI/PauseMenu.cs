@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     private void OnPausePerformed(InputAction.CallbackContext context)
     {
+        // If other panels are active do not activate
         foreach(GameObject UI in otherUI)
         {
             if(UI.activeInHierarchy) return;

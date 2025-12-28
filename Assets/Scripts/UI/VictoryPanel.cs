@@ -1,16 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class VictoryPanel : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private AudioClip victoryAudio;
+    private AudioSource audioSource;
+    public void SetVictory()
     {
-        
+        victoryPanel.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(victoryAudio);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Quit()
     {
-        
+        Application.Quit();
     }
 }
