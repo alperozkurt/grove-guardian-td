@@ -7,7 +7,7 @@ public class TowerTrigger : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private GameObject towerToCreate;
     [SerializeField] private AudioClip towerCreationAudio;
-    [SerializeField] private int baseTowerCost = 15;
+    [SerializeField] private int baseTowerCost = 25;
     private int currentCost;
     private AudioSource audioSource;
     private bool isUsed = false;

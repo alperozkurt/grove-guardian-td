@@ -292,8 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62db1988453c60381bb5c40538d4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  maxHealth: 16
+  speed: 11
+  maxHealth: 20
   damageOnImpact: 10
   coinOnDeath: 1
   healthBar: {fileID: 1565161496169689959}

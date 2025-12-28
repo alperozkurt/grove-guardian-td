@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  coin: 20
+  coin: 30
   healthUI: {fileID: 0}
   currentHealth: 100
   towerCount: 0

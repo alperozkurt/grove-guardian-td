@@ -312,7 +312,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  fireRate: 1
+  fireRate: 1.2
   maxBulletCount: 3
   bulletController: {fileID: 5083275454773625632}
   currentBulletCount: 0

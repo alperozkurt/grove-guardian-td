@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerToCreate: {fileID: 7872443174113817124, guid: da779b59e56d57e219146c4cee5537cc, type: 3}
   towerCreationAudio: {fileID: 8300000, guid: 89e4d46ad3798ca1bb5dc749509e8249, type: 3}
-  baseTowerCost: 15
+  baseTowerCost: 20
 --- !u!65 &4459174937567046872
 BoxCollider:
   m_ObjectHideFlags: 0

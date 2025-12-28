@@ -266,11 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d3c7ea3cc73753cbe3cc1b589061e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 12
-  cooldownDuration: 16
+  damageAmount: 10
+  cooldownDuration: 18
   inputActionName: Blizzard
-  slowPercantage: 0.6
-  slowDuration: 5
+  slowPercantage: 0.5
+  slowDuration: 6
   freezeParticlePrefab: {fileID: 3106182021380325047, guid: 86e5a37f792cf848a92bb9090453899b, type: 3}
   blizzardSound: {fileID: 8300000, guid: dc0c096ae917ef8a1a38bec9a2c433f3, type: 3}
   cooldownOverlay: {fileID: 0}

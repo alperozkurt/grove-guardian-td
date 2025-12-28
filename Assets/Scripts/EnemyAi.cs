@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(AudioSource))]
 public class EnemyAi : MonoBehaviour
 {
     [Header("Enemy Stats")]
