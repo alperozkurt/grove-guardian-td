@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 10
-  bulletSpeed: 50
+  bulletSpeed: 60
   maxLifeTime: 5

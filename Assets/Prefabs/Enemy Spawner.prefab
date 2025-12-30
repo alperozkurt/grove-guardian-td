@@ -82,7 +82,11 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
       spawnCount: 6
       spawnRate: 0.5
-      delayAfterGroup: 2
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 6
+      spawnRate: 0.5
+      delayAfterGroup: 3
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
       spawnCount: 6
       spawnRate: 0.5
@@ -91,26 +95,49 @@ MonoBehaviour:
   - waveName: Medium wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
-      spawnCount: 7
+      spawnCount: 4
       spawnRate: 0.5
       delayAfterGroup: 3
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 8
+      spawnRate: 0.5
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
+      spawnCount: 4
+      spawnRate: 0.5
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 5827142888875009265, guid: ffe835e27c640791889c19b9abe78517, type: 3}
+      spawnCount: 4
+      spawnRate: 1
+      delayAfterGroup: 3
+    timeToNextWave: 40
+  - waveName: Hard Wave
+    waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
       spawnCount: 7
       spawnRate: 0.5
       delayAfterGroup: 3
-    - enemyPrefab: {fileID: 5827142888875009265, guid: ffe835e27c640791889c19b9abe78517, type: 3}
-      spawnCount: 11
-      spawnRate: 0.7
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 8
+      spawnRate: 0.5
       delayAfterGroup: 3
-    timeToNextWave: 40
-  - waveName: Hard wave
+    - enemyPrefab: {fileID: 5827142888875009265, guid: ffe835e27c640791889c19b9abe78517, type: 3}
+      spawnCount: 6
+      spawnRate: 1
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
+      spawnCount: 8
+      spawnRate: 0.5
+      delayAfterGroup: 3
+    timeToNextWave: 60
+  - waveName: Hardest Wave
     waveGroups:
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
       spawnCount: 5
       spawnRate: 0.4
       delayAfterGroup: 3
     - enemyPrefab: {fileID: 5827142888875009265, guid: ffe835e27c640791889c19b9abe78517, type: 3}
-      spawnCount: 8
+      spawnCount: 3
       spawnRate: 0.4
       delayAfterGroup: 3
     - enemyPrefab: {fileID: 1713781036754730, guid: 449b8f0206e6ab29197b8d840c631a02, type: 3}
@@ -119,6 +146,10 @@ MonoBehaviour:
       delayAfterGroup: 3
     - enemyPrefab: {fileID: 1006805808339903688, guid: 27dccc9c5051ca946ae5c583b8e1a9f6, type: 3}
       spawnCount: 5
+      spawnRate: 0.4
+      delayAfterGroup: 3
+    - enemyPrefab: {fileID: 5827142888875009265, guid: ffe835e27c640791889c19b9abe78517, type: 3}
+      spawnCount: 3
       spawnRate: 0.4
       delayAfterGroup: 3
     timeToNextWave: 60

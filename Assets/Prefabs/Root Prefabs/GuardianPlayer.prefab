@@ -286,9 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101cbeb76ef115d4b8460b6d8ca7a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 1.4
-  boostDuration: 6
-  cooldownDuration: 25
+  boostAmount: 1.5
+  boostDuration: 7
+  cooldownDuration: 21
   inputActionName: NatureBoost
   boostParticlePrefab: {fileID: 2079218250412454697, guid: 8a78cd70669bd637c9a93aa34b09a04a, type: 3}
   boostSound: {fileID: 8300000, guid: ba64dc432bbc79f1e8089d9cdf09e426, type: 3}

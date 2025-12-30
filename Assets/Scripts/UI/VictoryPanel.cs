@@ -8,6 +8,12 @@ public class VictoryPanel : MonoBehaviour
     private AudioSource audioSource;
     public void SetVictory()
     {
+        // Stop game music
+        AudioSource[] allAudioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Stop();
+        }
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

@@ -9,6 +9,12 @@ public class GameOverPanel : MonoBehaviour
 
     public void SetGameOver()
     {
+        // Stop game music
+        AudioSource[] allAudioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Stop();
+        }
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

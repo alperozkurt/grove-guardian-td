@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  maxHealth: 500
+  maxHealth: 800
   damageOnImpact: 100
   healthBar: {fileID: 6664484806223104070}
 --- !u!1001 &670904430295362645

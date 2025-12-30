@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62db1988453c60381bb5c40538d4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  maxHealth: 46
-  damageOnImpact: 15
+  speed: 7
+  maxHealth: 55
+  damageOnImpact: 20
   coinOnDeath: 3
   healthBar: {fileID: 2588682124344496769}
   deathSound: {fileID: 8300000, guid: 4c630ceb460bc802e9fddda4d98caeb5, type: 3}
@@ -118,7 +118,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
